@@ -6,7 +6,7 @@ INITIAL_PATH=$(pwd)
 TMPDIR=${TMPDIR:-/tmp}
 
 sudo apt-get update -y
-sudo apt-get install -y cmake flex bison libgcrypt20-dev libssh-dev libpcap-dev libsystemd-dev qtbase5-dev qttools5-dev qtmultimedia5-dev libqt5svg5-dev
+sudo apt-get install -y axel cmake flex bison libgcrypt20-dev libssh-dev libpcap-dev libsystemd-dev qtbase5-dev qttools5-dev qtmultimedia5-dev libqt5svg5-dev
 
 echo [+] Download ${FILENAME}
 if [ ! -e ${TMPDIR}/${FILENAME} ]; then
