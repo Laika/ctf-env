@@ -15,7 +15,7 @@ echo [+] Start building
 cd ${TMPDIR}/HashPump
 make -j$(nproc) && sudo make install
 
-rm -rf ${TMPDIR}HashPump
+rm -rf ${TMPDIR}/HashPump
 cd ${INITDIR}
 echo [+] Done
 
