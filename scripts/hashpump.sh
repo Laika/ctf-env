@@ -1,20 +1,22 @@
 #!/bin/bash
 
-echo [+] Cloning HashPump
-git clone https://github.com/bwall/HashPump.git /tmp/HashPump
+TMPDIR=${TMPDIR:-/tmp}
+INITDIR=$(pwd)
+
 
 echo [+] Installing dependencies
 sudo apt-get update -y
 sudo apt-get install -y libssl-dev build-essential
 
+echo [+] Cloning HashPump
+git clone https://github.com/bwall/HashPump.git ${TMPDIR}/HashPump
 
 echo [+] Start building
-pushd /tmp/HashPump
+cd ${TMPDIR}/HashPump
 make -j$(nproc) && sudo make install
 
-cd /tmp
-rm -rf HashPump
-popd
+rm -rf ${TMPDIR}HashPump
+cd ${INITDIR}
 echo [+] Done
 
 

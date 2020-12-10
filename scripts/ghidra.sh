@@ -4,9 +4,14 @@
 TMPDIR=${TMPDIR:-/tmp}
 TOOLDIR=${TOOLDIR:-${HOME}/CTF/Tools}
 
+FILENAME="ghidra_9.2_PUBLIC_20201113.zip"
 
-wget "https://ghidra-sre.org/ghidra_9.2_PUBLIC_20201113.zip" -P ${TOOLDIR}
-cd ${TOOLDIR}
-unzip ghidra_9.2_PUBLIC_20201113.zip
 
-sudo ln -sf ${TOOLDIR}/ghidra_*/ghidraRun /usr/bin/ghidra
+sudo apt update -y && apt install -y openjdk-14-jdk openjdk-14-jre
+
+wget "https://ghidra-sre.org/${FILENAME}" -P ${TOOLDIR}
+cd ${TOOLDIR} && unzip ${FILENAME}
+
+sudo ln -sf ${TOOLDIR}/${FILENAME%_[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9].zip}/ghidraRun /usr/local/bin/ghidra
+
+
