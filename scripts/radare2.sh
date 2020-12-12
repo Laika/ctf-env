@@ -15,7 +15,7 @@ sudo sys/install.sh --install
 
 if type "r2" > /dev/null 2>&1; then
   r2pm init
-  r2pm -i r2ghidra-dec
+  r2pm -i r2ghidra
 else
   r2pm update
 fi
