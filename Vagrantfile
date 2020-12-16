@@ -14,11 +14,11 @@ Vagrant.configure("2") do |config|
     vb.memory = 4096
   end
   #config.vm.provision "shell", path: "scripts/pyenv.sh", privileged: false
+  #config.vm.provision "shell", path: "scripts/volatility.sh", privileged: false
+  #config.vm.provision "shell", path: "scripts/ghidra.sh", privileged: false
+  #config.vm.provision "shell", path: "scripts/gmpy2.sh", privileged: false
+  #config.vm.provision "shell", path: "scripts/wireshark.sh", privileged: false
+  #config.vm.provision "shell", path: "scripts/sage.sh", privileged: false
   config.vm.provision "shell", path: "scripts/radare2.sh", privileged: false
-  config.vm.provision "shell", path: "scripts/volatility.sh", privileged: false
-  config.vm.provision "shell", path: "scripts/ghidra.sh", privileged: false
-  config.vm.provision "shell", path: "scripts/gmpy2.sh", privileged: false
-  config.vm.provision "shell", path: "scripts/wireshark.sh", privileged: false
-  config.vm.provision "shell", path: "scripts/sage.sh", privileged: false
   
 end
