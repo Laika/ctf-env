@@ -2,7 +2,7 @@
 
 INIT_PATH=$(pwd)
 TMPDIR=${TMPDIR:-/tmp}
-VERSION=2020.11.3
+VERSION=2020.12.1
 FILENAME=burpsuite_community_linux_v${VERSION//\./\_}
 
 sudo apt update -y
