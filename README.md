@@ -12,7 +12,7 @@
 ![radare2](https://img.shields.io/badge/Radare2-latest-52307c.svg)
 ![sage](https://img.shields.io/badge/SageMath-9.2-52307c.svg)
 ![volatility](https://img.shields.io/badge/Volatility-2.6-52307c.svg)
-![wireshark](https://img.shields.io/badge/Wireshark-3.4.0-52307c.svg)
+![wireshark](https://img.shields.io/badge/Wireshark-3.4.2-52307c.svg)
 
 
   
