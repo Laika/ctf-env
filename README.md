@@ -26,8 +26,7 @@ Please use `Vagrantfile`.
 ## Scripts
 - burpsuite.sh 🛠️  
     Run: `burpsuite`  
-- gdb.sh 🛠️  
-    Version:   
+- gdb.sh 🛠️   
   - [longld/peda](https://github.com/longld/peda)  
     Run: `peda`  
   - [hugsy/gef](https://github.com/hugsy/gef)  
@@ -38,28 +37,20 @@ Please use `Vagrantfile`.
     Integrated into pwndbg  
   
 - ghidra.sh 🛠️  
-    Version: 9.2 (2020/11/13)  
     Run: `ghidra`  
 - gmpy2.sh 🐍  
-    Version: Latest (from PyPI)  
     `import gmpy2`  
 - hashpump.sh 🛠️   
-    Version: Latest (from GitHub)  
     Run: `hashpump`  
 - john-the-ripper.sh 🛠️  
-    Version: Latest (from GitHub)  
 - pyenv.sh 🐍  
-    Python 3.9.0 : `python` or `python3`  
-    Python 2.7.18: `python2`  
+    Python 3: `python` or `python3`  
+    Python 2: `python2`  
 - radare2.sh 🛠️  
-    Version: Latest (from GitHub)  
     Run: `r2`  
 - sage.sh 🛠️  
-    Version: 9.2  
     Run: `sage`  
 - volatility.sh 🛠️  
-    Version: 2.6 (Linux standalone)  
     Run: `volatility`  
 - wireshark.sh 🛠️  
-    Version: 3.4.0  
     Run: `wireshark`  
