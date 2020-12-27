@@ -1,6 +1,6 @@
 #!/bin/bash -e
 
-VERSION=3.4.0
+VERSION=3.4.2
 FILENAME=wireshark-${VERSION}.tar.xz
 INITIAL_PATH=$(pwd)
 TMPDIR=${TMPDIR:-/tmp}
@@ -14,11 +14,12 @@ CARES_VERSION=1.17.1
 CARES="c-ares-${CARES_VERSION}"
 
 if [ ! -e ${TMPDIR}/${CARES} ]; then
-    cd ${TMPDIR} 
-    axel "https://github.com/c-ares/c-ares/releases/download/cares-${CARES_VERSION//\./_}/${CARES}.tar.gz"  
+    cd ${TMPDIR}
+    axel -a "https://github.com/c-ares/c-ares/releases/download/cares-${CARES_VERSION//\./_}/${CARES}.tar.gz" \
+      -o ${CARES}.tar.gz
     tar xvf ${CARES}.tar.gz 
 fi
-cd ${TMPDIR}/${CARES} 
+cd ${TMPDIR}/${CARES}
 ./configure
 make -j$(nproc) && sudo make install && rm -rf ${TMPDIR}/${CARES}
 
@@ -40,4 +41,3 @@ rm -rf ${TMPDIR}/build
 rm -f ${TMPDIR}/${FILENAME}*
 echo [+] Done
 cd ${INITIAL_PATH}
-

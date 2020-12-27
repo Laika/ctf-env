@@ -4,7 +4,7 @@
 TMPDIR=${TMPDIR:-/tmp}
 TOOLDIR=${TOOLDIR:-${HOME}/CTF/Tools}
 
-FILENAME="ghidra_9.2_PUBLIC_20201113.zip"
+FILENAME="ghidra_9.2.1_PUBLIC_20201215.zip"
 
 
 if [ ! $(command -v ghidra) ]; then 
