@@ -11,13 +11,14 @@ sudo apt-get install -y axel cmake flex bison libgcrypt20-dev libssh-dev libpcap
 
 echo [+] Install c-ares
 CARES_VERSION=1.17.1
-CARES="c-ares-${VER}"
+CARES="c-ares-${CARES_VERSION}"
 
 if [ ! -e ${TMPDIR}/${CARES} ]; then
-    axel -a "https://github.com/c-ares/c-ares/releases/download/cares-${CARES_VERSION//\./_}/${CARES}.tar.gz"
+    cd ${TMPDIR} 
+    axel "https://github.com/c-ares/c-ares/releases/download/cares-${CARES_VERSION//\./_}/${CARES}.tar.gz"  
     tar xvf ${CARES}.tar.gz 
-
-cd ${TMPDIR}/${CARES}
+fi
+cd ${TMPDIR}/${CARES} 
 ./configure
 make -j$(nproc) && sudo make install && rm -rf ${TMPDIR}/${CARES}
 
