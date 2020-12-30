@@ -7,7 +7,7 @@
 ![hashpump](https://img.shields.io/badge/HashPump-latest-52307c.svg)
 ![john-the-ripper](https://img.shields.io/badge/John%20the%20Ripper-latest-52307c.svg)
 ![pyenv](https://img.shields.io/badge/pyenv-latest-52307c.svg)
-![python3](https://img.shields.io/badge/Python3-3.9.0-52307c.svg)
+![python3](https://img.shields.io/badge/Python3-3.9.1-52307c.svg)
 ![python2](https://img.shields.io/badge/Python2-2.7.18-52307c.svg)
 ![radare2](https://img.shields.io/badge/Radare2-latest-52307c.svg)
 ![sage](https://img.shields.io/badge/SageMath-9.2-52307c.svg)
