@@ -1,6 +1,6 @@
 #!/bin/bash -e
 
-VERSION=3.4.2
+VERSION=3.4.3
 FILENAME=wireshark-${VERSION}.tar.xz
 INITIAL_PATH=$(pwd)
 TMPDIR=${TMPDIR:-/tmp}
