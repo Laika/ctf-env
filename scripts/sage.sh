@@ -7,7 +7,7 @@ FILENAME="sage-${VER}-Ubuntu_20.04-x86_64"
 
 if [ ! $(command -v sage) ]; then
   if [ ! -e ${INSTALL_PATH}/${FILENAME}.tar.bz2 ];then
-      axel -a "http://ftp.yz.yamagata-u.ac.jp/pub/math/sage/linux/64bit/${FILENAME}.tar.bz2" -o ${INSTALL_PATH}
+      wget "http://ftp.yz.yamagata-u.ac.jp/pub/math/sage/linux/64bit/${FILENAME}.tar.bz2" -O ${INSTALL_PATH}
   fi
 
   cd ${INSTALL_PATH}
