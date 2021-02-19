@@ -1,42 +1,56 @@
 #!/bin/bash -e
 
-VERSION="3.4.3"
-FILENAME="wireshark-${VERSION}.tar.xz"
 INITIAL_PATH="$(pwd)"
 TMPDIR="${TMPDIR:-/tmp}"
 
-sudo apt-get update 
-sudo apt-get install -y axel cmake flex bison libgcrypt20-dev libssh-dev libpcap-dev libsystemd-dev qtbase5-dev qttools5-dev qtmultimedia5-dev libqt5svg5-dev
+_prerequisite(){
+  sudo apt-get update 
+  sudo apt-get install -y axel cmake flex bison libgcrypt20-dev libssh-dev libpcap-dev libsystemd-dev qtbase5-dev qttools5-dev qtmultimedia5-dev libqt5svg5-dev
+}
 
-echo "[+] Install c-ares"
-CARES_VERSION="1.17.1"
-CARES="c-ares-${CARES_VERSION}"
+_cares(){
+  echo "[+] Install c-ares"
+  local VERSION="1.17.1"
+  local FILENAME="c-ares-${VERSION}"
 
-if [ ! -e ${TMPDIR}/${CARES} ]; then
+  if [ ! -e ${TMPDIR}/${FILENAME} ]; then
     cd ${TMPDIR}
-    axel -a "https://github.com/c-ares/c-ares/releases/download/cares-${CARES_VERSION//\./_}/${CARES}.tar.gz" \
-      -o ${CARES}.tar.gz
-    tar xvf ${CARES}.tar.gz 
-fi
-cd ${TMPDIR}/${CARES}
-./configure
-make -j$(nproc) && sudo make install && rm -rf ${TMPDIR}/${CARES}
+    axel -a "https://github.com/c-ares/c-ares/releases/download/cares-${VERSION//\./_}/${FILENAME}.tar.gz" -o ${FILENAME}.tar.gz
+    tar xvf ${FILENAME}.tar.gz 
+  fi
+  cd ${TMPDIR}/${FILENAME}
+  ./configure
+  make -j$(nproc) && sudo make install && rm -rf ${TMPDIR}/${FILENAME}
+}
 
-
-
-echo "[+] Download ${FILENAME}"
-if [ ! -e ${TMPDIR}/${FILENAME} ]; then
+_wireshark(){
+  echo "[+] Download ${FILENAME}"
+  local VERSION="3.4.3"
+  local FILENAME="wireshark-${VERSION}.tar.xz"
+  if [ ! -e ${TMPDIR}/${FILENAME} ]; then
     axel -a "https://2.na.dl.wireshark.org/src/${FILENAME}" -o ${TMPDIR}
-fi
-cd ${TMPDIR}
-tar xf ${FILENAME}
-mkdir -p ${TMPDIR}/build && cd ${TMPDIR}/build
+  fi
+  cd ${TMPDIR}
+  tar xf ${FILENAME}
+  mkdir -p ${TMPDIR}/build && cd ${TMPDIR}/build
 
-echo "[+] Start building"
-cmake ${TMPDIR}/wireshark-${VERSION}
-make -j$(nproc)
-sudo make install
-rm -rf ${TMPDIR}/build
-rm -f ${TMPDIR}/${FILENAME}*
-echo "[+] Done"
-cd ${INITIAL_PATH}
+  echo "[+] Start building"
+  cmake ${TMPDIR}/wireshark-${VERSION}
+  make -j$(nproc)
+  sudo make install
+  rm -rf ${TMPDIR}/build
+  rm -f ${TMPDIR}/${FILENAME}*
+}
+
+_postprocessing(){
+  echo "[+] Done"
+  cd ${INITIAL_PATH}
+}
+
+_prerequisite
+_cares
+_wireshark
+_postprocessing
+
+
+
