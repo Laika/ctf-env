@@ -1,8 +1,8 @@
 #!/bin/bash 
 
-VER=9.2
-INSTALL_DIR=${HOME}/CTF
-INSTALL_PATH=${INSTALL_DIR:?'${INSTALL_DIR} is not defined'}/Tools
+VERSION="9.2"
+INSTALL_DIR="${HOME}/CTF"
+INSTALL_PATH="${INSTALL_DIR:?'${INSTALL_DIR} is not defined'}/Tools"
 FILENAME="sage-${VER}-Ubuntu_20.04-x86_64"
 
 if [ ! $(command -v sage) ]; then
