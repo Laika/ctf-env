@@ -1,7 +1,7 @@
 #!/bin/bash
 
-PYTHON2_VERSION="2.7.18"
-PYTHON3_VERSION="3.9.2"
+PYTHON2_VERSION="{{ python2.version }}"
+PYTHON3_VERSION="{{ python3.version }}"
 
 sudo apt-get update 
 sudo apt-get install -y make build-essential libssl-dev zlib1g-dev libbz2-dev \

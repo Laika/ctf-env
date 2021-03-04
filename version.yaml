@@ -1,0 +1,14 @@
+burpsuite: 
+  version: "2021.2.1"
+ghidra: 
+  version: "9.2.2"
+python3: 
+  version: "3.9.2"
+python2: 
+  version: "2.7.18"
+sagemath: 
+  version: "9.2"
+volatility: 
+  version: "2.6"
+wireshark: 
+  version: "3.4.3"
