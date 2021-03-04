@@ -8,7 +8,8 @@ TOOL_DIR=${TOOL_DIR:-${HOME}/ctf-tools}
 FILENAME="ghidra_9.2.2_PUBLIC_20201229.zip"
 
 _prerequisite(){
-  sudo apt update && sudo apt install -y openjdk-14-jdk
+  sudo apt update
+  sudo apt install -y openjdk-14-jdk unzip
 }
 
 _install(){

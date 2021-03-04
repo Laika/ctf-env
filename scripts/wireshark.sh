@@ -14,7 +14,7 @@ _cares(){
 
   if [ ! -e ${TMPDIR}/${FILENAME} ]; then
     cd ${TMPDIR}
-    axel -a "https://github.com/c-ares/c-ares/releases/download/cares-${VERSION//\./_}/${FILENAME}.tar.gz" -o ${FILENAME}.tar.gz
+    axel -a -q "https://github.com/c-ares/c-ares/releases/download/cares-${VERSION//\./_}/${FILENAME}.tar.gz" -o ${FILENAME}.tar.gz
     tar xvf ${FILENAME}.tar.gz 
   fi
   cd ${TMPDIR}/${FILENAME}
@@ -26,7 +26,7 @@ _wireshark(){
   local VERSION="3.4.3"
   local FILENAME="wireshark-${VERSION}.tar.xz"
   if [ ! -e ${TMPDIR}/${FILENAME} ]; then
-    axel -a "https://2.na.dl.wireshark.org/src/${FILENAME}" -o ${TMPDIR}
+    axel -a -q "https://2.na.dl.wireshark.org/src/${FILENAME}" -o ${TMPDIR}
   fi
   cd ${TMPDIR}
   tar xf ${FILENAME}

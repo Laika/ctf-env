@@ -6,7 +6,7 @@ PREFIX="/usr/local/bin"
 
 _prerequisite(){
   sudo apt-get update
-  sudo apt-get install -y git
+  sudo apt-get install -y git gdb
 }
 
 _install(){
@@ -78,3 +78,10 @@ EOF
 _postprocess(){
   cd ${INIT_WORKDIR}
 }
+
+
+if [ ! $(command -v peda) ] || [ ! $(command -v gef) ] || [ ! $(command -v dbg) ]; then
+  _prerequisite
+  _install
+  _postprocess
+fi

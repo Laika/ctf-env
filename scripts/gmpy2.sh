@@ -6,7 +6,8 @@ _prerequisite() {
 }
 
 _install(){
-  ${HOME}/.pyenv/shims/python -m pip install gmpy2
+  ${HOME}/.pyenv/shims/python -m pip install -U pip 
+  ${HOME}/.pyenv/shims/python -m pip install -U gmpy2
 }
 
 _prerequisite
