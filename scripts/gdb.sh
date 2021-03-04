@@ -1,7 +1,7 @@
 #!/bin/bash
 
-TOOL_DIR="${HOME}/CTF/Tools"
-INIT_DIR=$(pwd)
+INIT_WORKDIR=$(pwd)
+TOOL_DIR="${HOME}/ctf-tools"
 PREFIX="/usr/local/bin"
 
 
@@ -45,7 +45,7 @@ Initializes PwnDBG
 end
 
 define init-gef
-source ~/.gdbinit-gef.py
+source ${TOOL_DIR}/.gdbinit-gef.py
 end
 document init-gef
 Initializes GEF (GDB Enhanced Features)
