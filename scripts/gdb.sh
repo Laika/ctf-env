@@ -4,23 +4,28 @@ INIT_WORKDIR=$(pwd)
 TOOL_DIR="${HOME}/ctf-tools"
 PREFIX="/usr/local/bin"
 
+_prerequisite(){
+  sudo apt-get update
+  sudo apt-get install -y git
+}
 
-# peda
-git clone https://github.com/longld/peda.git ${TOOL_DIR}/peda
+_install(){
+  # peda
+  git clone https://github.com/longld/peda.git ${TOOL_DIR}/peda
 
-# gef
-wget -q -O ${TOOL_DIR}/.gdbinit-gef.py https://github.com/hugsy/gef/raw/master/gef.py
-python2 -m pip install -U pip keystone-engine ropper 
+  # gef
+  wget -q -O "${TOOL_DIR}/.gdbinit-gef.py" "https://github.com/hugsy/gef/raw/master/gef.py"
+  python2 -m pip install -U pip keystone-engine ropper 
 
-# pwndbg
-git clone https://github.com/pwndbg/pwndbg ${TOOL_DIR}/pwndbg
-cd ${TOOL_DIR}/pwndbg
-./setup.sh
+  # pwndbg
+  git clone "https://github.com/pwndbg/pwndbg" "${TOOL_DIR}/pwndbg"
+  cd ${TOOL_DIR}/pwndbg
+  ./setup.sh
 
-# pwngdb
-git clone https://github.com/scwuaptx/Pwngdb.git ${TOOL_DIR}/pwngdb
+  # pwngdb
+  git clone "https://github.com/scwuaptx/Pwngdb.git" "${TOOL_DIR}/pwngdb"
 
-cat << EOF | tee ${HOME}/.gdbinit
+  cat << EOF | tee ${HOME}/.gdbinit
 set follow-fork-mode parent
 
 define init-peda
@@ -49,25 +54,27 @@ source ${TOOL_DIR}/.gdbinit-gef.py
 end
 document init-gef
 Initializes GEF (GDB Enhanced Features)
-end
+  end
 EOF
 
 
-sudo cat << 'EOF' | sudo tee ${PREFIX}/peda
+  sudo cat << 'EOF' | sudo tee ${PREFIX}/peda
 #!/bin/bash
 exec gdb -q -ex init-peda "$@" 
 EOF
 
-sudo cat << 'EOF' | sudo tee ${PREFIX}/dbg
+  sudo cat << 'EOF' | sudo tee ${PREFIX}/dbg
 #!/bin/bash
 exec gdb -q -ex init-pwndbg "$@" 
 EOF
 
-sudo cat << 'EOF' | sudo tee ${PREFIX}/gef
+  sudo cat << 'EOF' | sudo tee ${PREFIX}/gef
 #!/bin/bash
 exec gdb -q -ex init-gef "$@" 
 EOF
 
-sudo chmod +x ${PREFIX}/{peda,dbg,gef}
-
-cd ${INIT_DIR}
+  sudo chmod +x ${PREFIX}/{peda,dbg,gef}
+}
+_postprocess(){
+  cd ${INIT_WORKDIR}
+}

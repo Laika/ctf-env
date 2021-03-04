@@ -1,23 +1,31 @@
-#!/bin/bash
+#!/bin/bash -e
 
+INIT_WORKDIR=$(pwd)
 TMPDIR=${TMPDIR:-/tmp}
-INITDIR=$(pwd)
 
 
-echo [+] Installing dependencies
-sudo apt-get update -y
-sudo apt-get install -y libssl-dev build-essential
+_prerequisite(){
+  sudo apt-get update 
+  sudo apt-get install -y libssl-dev build-essential git
+}
 
-echo [+] Cloning HashPump
-git clone https://github.com/bwall/HashPump.git ${TMPDIR}/HashPump
+_hashpump(){
+  git clone "https://github.com/bwall/HashPump.git" "${TMPDIR}/HashPump"
+  cd ${TMPDIR}/HashPump
+  make -j$(nproc) && sudo make install
+}
 
-echo [+] Start building
-cd ${TMPDIR}/HashPump
-make -j$(nproc) && sudo make install
-
-rm -rf ${TMPDIR}/HashPump
-cd ${INITDIR}
-echo [+] Done
+_postprocess(){
+  rm -rf ${TMPDIR}/HashPump
+  cd ${INITDIR}
+}
 
 
+if [ ! $(command -v hashpump) ]; then
+  _prerequisite
+  _install
+  _postprocess
+else
+  echo "Hashpump is already installed. Skipped."
+fi
 

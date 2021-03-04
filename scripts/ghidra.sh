@@ -3,7 +3,7 @@
 
 INIT_WORKDIR="$(pwd)"
 TMPDIR=${TMPDIR:-/tmp}
-TOOLDIR=${TOOLDIR:-${HOME}/ctf-tools}
+TOOL_DIR=${TOOL_DIR:-${HOME}/ctf-tools}
 
 FILENAME="ghidra_9.2.2_PUBLIC_20201229.zip"
 
@@ -12,20 +12,22 @@ _prerequisite(){
 }
 
 _install(){
-  if [ ! -e ${TOOLDIR}/${FILENAME} ]; then
-    wget "https://ghidra-sre.org/${FILENAME}" -P ${TOOLDIR}
+  if [ ! -e ${TOOL_DIR}/${FILENAME} ]; then
+    wget "https://ghidra-sre.org/${FILENAME}" -P ${TOOL_DIR}
   fi
-  cd ${TOOLDIR} && unzip ${FILENAME}
-  sudo ln -sf ${TOOLDIR}/${FILENAME%_[0-9]*.zip}/ghidraRun /usr/local/bin/ghidra
+  cd ${TOOL_DIR} && unzip ${FILENAME}
+  sudo ln -sf ${TOOL_DIR}/${FILENAME%_[0-9]*.zip}/ghidraRun /usr/local/bin/ghidra
 }
 
 _postprocess(){
   cd ${INIT_WORKDIR}
-  rm ${TOOLDIR}/${FILENAME}
+  rm ${TOOL_DIR}/${FILENAME}
 }
 
 if [ ! $(command -v ghidra) ]; then 
   _prerequisite
   _install
   _postprocess
+else
+  echo "Burp Suite is already installed. Skipped."
 fi

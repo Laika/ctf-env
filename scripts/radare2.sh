@@ -1,8 +1,8 @@
 #!/bin/bash
 
 TMPDIR=${TMPDIR:-/tmp}
-TOOL_DIR="${HOME}/CTF/Tools"
-INIT_PATH="$(pwd)"
+TOOL_DIR="${HOME}/ctf-tools"
+INIT_WORKDIR="$(pwd)"
 
 if [ ! $(command -v r2) ]; then
   if [ ! -e ${TOOL_DIR}/radare2 ]; then

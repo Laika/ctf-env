@@ -1,6 +1,6 @@
 #!/bin/bash -e
 
-INITIAL_PATH="$(pwd)"
+INIT_WORKDIR="$(pwd)"
 TMPDIR="${TMPDIR:-/tmp}"
 
 _prerequisite(){
@@ -9,7 +9,6 @@ _prerequisite(){
 }
 
 _cares(){
-  echo "[+] Install c-ares"
   local VERSION="1.17.1"
   local FILENAME="c-ares-${VERSION}"
 
@@ -24,7 +23,6 @@ _cares(){
 }
 
 _wireshark(){
-  echo "[+] Download ${FILENAME}"
   local VERSION="3.4.3"
   local FILENAME="wireshark-${VERSION}.tar.xz"
   if [ ! -e ${TMPDIR}/${FILENAME} ]; then
@@ -34,7 +32,6 @@ _wireshark(){
   tar xf ${FILENAME}
   mkdir -p ${TMPDIR}/build && cd ${TMPDIR}/build
 
-  echo "[+] Start building"
   cmake ${TMPDIR}/wireshark-${VERSION}
   make -j$(nproc)
   sudo make install
@@ -43,14 +40,14 @@ _wireshark(){
 }
 
 _postprocessing(){
-  echo "[+] Done"
-  cd ${INITIAL_PATH}
+  cd ${INIT_WORKDIR}
 }
 
-_prerequisite
-_cares
-_wireshark
-_postprocessing
-
+if [ ! $(command -v wireshark) ]; then
+  _prerequisite
+  _cares
+  _wireshark
+  _postprocessing
+fi
 
 

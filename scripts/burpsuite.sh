@@ -1,6 +1,6 @@
 #!/bin/bash
 
-INITIAL_PATH="$(pwd)"
+INIT_WORKDIR="$(pwd)"
 TMPDIR="${TMPDIR:-/tmp}"
 
 _prerequisite(){
@@ -20,12 +20,15 @@ _burpsuite(){
   cd ${TMPDIR}
   bash ${FILENAME}.sh
 }
-_postprocessing(){
+_postprocess(){
   rm ${FILENAME}.sh
-
   cd ${INIT_PATH}
 }
 
-_prerequisite
-_burpsuite
-_postprocessing
+if [ ! $(command -v ghidra) ]; then
+  _prerequisite
+  _burpsuite
+  _postprocess
+else
+  echo "Burp Suite is already installed. Skipped."
+fi
