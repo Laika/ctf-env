@@ -1,0 +1,28 @@
+name: template-rendering
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+  workflow_dispatch:
+  
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0 
+      - name: jinja2
+        run: |
+          pip install -U pip
+          pip install j2cli[yaml]
+          j2 .templates/README.j2 version.yaml -o README.md
+          for file in $(ls -1 .templates/scripts); do
+            j2 ".templates/scripts/${file}" "version.yaml" -o "scripts/${file%.*}.sh"
+          done
+          
+
