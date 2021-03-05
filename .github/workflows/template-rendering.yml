@@ -25,11 +25,27 @@ jobs:
         run: |
           python -m pip install -U pip
           python -m pip install j2cli[yaml]
-      - name: jinja2
+          
+      - name: Render version templates
         run: |
           j2 .templates/README.j2 version.yaml -o README.md
           for file in $(ls -1 .templates/scripts); do
             j2 ".templates/scripts/${file}" "version.yaml" -o "scripts/${file%.*}.sh"
           done
+        
+      - name: Commit files
+        run: |
+          git config --local user.name "Actions"
+          git add README.md scripts/
+          git commit -m "[Actions] Render version templates"
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          force: true
+          
+          
+          
+          
           
 
