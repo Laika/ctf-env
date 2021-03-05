@@ -23,7 +23,7 @@ _cares(){
 }
 
 _wireshark(){
-  local VERSION="{{ wireshark.version }}"
+  local VERSION="3.4.3"
   local FILENAME="wireshark-${VERSION}.tar.xz"
   if [ ! -e ${TMPDIR}/${FILENAME} ]; then
     axel -a -q "https://2.na.dl.wireshark.org/src/${FILENAME}" -o ${TMPDIR}
