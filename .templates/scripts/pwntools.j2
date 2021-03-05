@@ -8,3 +8,6 @@ _install(){
   python -m pip install -U pip
   python -m pip install -U pwntools
 }
+
+_prerequisite
+_install
