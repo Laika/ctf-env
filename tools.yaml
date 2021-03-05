@@ -19,3 +19,6 @@ volatility:
 wireshark: 
   name: "Wireshark"
   version: "3.4.3"
+msieve: 
+  name: "Msieve"
+  version: "1.53"
