@@ -1,14 +1,21 @@
 burpsuite: 
+  name: "Burp Suite"
   version: "2021.2.1"
 ghidra: 
+  name: "Ghidra"
   version: "9.2.2"
 python3: 
+  name: "Python3"
   version: "3.9.2"
 python2: 
+  name: "Python2"
   version: "2.7.18"
 sagemath: 
+  name: "SageMath"
   version: "9.2"
 volatility: 
+  name: "Volatility"
   version: "2.6"
 wireshark: 
+  name: "Wireshark"
   version: "3.4.3"
