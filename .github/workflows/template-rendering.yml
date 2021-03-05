@@ -16,11 +16,17 @@ jobs:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0 
+      - name: Set up Python 3.9
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.9
           
+      - name: Install dependencies
+        run: |
+          python -m pip install -U pip
+          python -m pip install j2cli[yaml]
       - name: jinja2
         run: |
-          pip install -U pip
-          pip install j2cli[yaml]
           j2 .templates/README.j2 version.yaml -o README.md
           for file in $(ls -1 .templates/scripts); do
             j2 ".templates/scripts/${file}" "version.yaml" -o "scripts/${file%.*}.sh"
