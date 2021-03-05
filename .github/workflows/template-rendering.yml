@@ -28,7 +28,7 @@ jobs:
           
       - name: Render version templates
         run: |
-          j2 ".templates/README.j2" "version.yaml" -f ".templates/filters.py" -o "README.md"
+          j2 ".templates/README.j2" "version.yaml" --filters ".templates/filters.py" -o "README.md"
           for file in $(ls -1 .templates/scripts); do
             j2 ".templates/scripts/${file}" "version.yaml" --filters ".templates/filters.py" -o "scripts/${file%.*}.sh"
           done
