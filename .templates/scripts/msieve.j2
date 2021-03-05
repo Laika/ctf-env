@@ -7,7 +7,7 @@ TMPDIR="${TMPDIR:-/tmp}"
 
 _prerequisite(){
   sudo apt-get update
-  sudo apt-get instlal -y build-essential libgmp3-dev zlib1g-dev libecm-dev
+  sudo apt-get install -y build-essential libgmp3-dev zlib1g-dev libecm-dev
 }
 _install(){
   cd ${TMPDIR}
@@ -17,7 +17,7 @@ _install(){
   tar xf msieve.tar.gz
   cd msieve-${VERSION}/
   make all ECM=1
-  mv msieve /usr/local/bin/msieve
+  sudo mv msieve /usr/local/bin/msieve
 }
 _postprocess(){
   rm -rf ${TMPDIR}/msieve-${VERSION}
