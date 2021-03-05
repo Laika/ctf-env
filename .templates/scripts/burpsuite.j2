@@ -1,0 +1,34 @@
+#!/bin/bash
+
+INIT_WORKDIR="$(pwd)"
+TMPDIR="${TMPDIR:-/tmp}"
+
+_prerequisite(){
+  sudo apt update 
+  sudo apt install -y axel
+}
+
+_burpsuite(){
+  local VERSION="{{ burpsuite.version }}"
+  FILENAME="burpsuite_community_linux_v${VERSION//\./\_}"
+  if [ ! -e ${TMPDIR}/${FILENAME}.sh ]; then
+    axel -n 8 -v \
+      -a "https://portswigger.net/burp/releases/download?product=community&version=${VERSION}&type=Linux" \
+      -o ${TMPDIR}
+  fi
+
+  cd ${TMPDIR}
+  bash ${FILENAME}.sh
+}
+_postprocess(){
+  rm ${FILENAME}.sh
+  cd ${INIT_PATH}
+}
+
+if [ ! $(command -v ghidra) ]; then
+  _prerequisite
+  _burpsuite
+  _postprocess
+else
+  echo "Burp Suite is already installed. Skipped."
+fi
