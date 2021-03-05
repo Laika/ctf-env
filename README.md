@@ -21,36 +21,5 @@ A suite of installation shell scripts to create an environment for CTF.
 
 **⚠️ These scripts may ruin your existing environment ⚠️**  
 We **strongly** recommend create new environment and run these scripts on it.  
-Please use `Vagrantfile`.
+Please use `vagrant up && vagrant ssh`.
 
-## Scripts
-- burpsuite.sh 🛠️  
-    Run: `burpsuite`  
-- gdb.sh 🛠️   
-  - [longld/peda](https://github.com/longld/peda)  
-    Run: `peda`  
-  - [hugsy/gef](https://github.com/hugsy/gef)  
-    Run: `peda`  
-  - [pwndbg/pwndbg](https://github.com/pwndbg/pwndbg)  
-    Run: `dbg`  
-  - [scwuaptx/Pwngdb](https://github.com/scwuaptx/Pwngdb)  
-    Integrated into pwndbg  
-  
-- ghidra.sh 🛠️  
-    Run: `ghidra`  
-- gmpy2.sh 🐍  
-    `import gmpy2`  
-- hashpump.sh 🛠️   
-    Run: `hashpump`  
-- john-the-ripper.sh 🛠️  
-- pyenv.sh 🐍  
-    Python 3: `python` or `python3`  
-    Python 2: `python2`  
-- radare2.sh 🛠️  
-    Run: `r2`  
-- sage.sh 🛠️  
-    Run: `sage`  
-- volatility.sh 🛠️  
-    Run: `volatility`  
-- wireshark.sh 🛠️  
-    Run: `wireshark`  
