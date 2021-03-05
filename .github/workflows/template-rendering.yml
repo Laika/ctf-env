@@ -26,11 +26,11 @@ jobs:
           python -m pip install -U pip
           python -m pip install j2cli[yaml]
           
-      - name: Render version templates
+      - name: Render templates
         run: |
-          j2 ".templates/README.j2" "version.yaml" --filters ".templates/filters.py" -o "README.md"
+          j2 ".templates/README.j2" "tools.yaml" --filters ".templates/filters.py" -o "README.md"
           for file in $(ls -1 .templates/scripts); do
-            j2 ".templates/scripts/${file}" "version.yaml" --filters ".templates/filters.py" -o "scripts/${file%.*}.sh"
+            j2 ".templates/scripts/${file}" "tools.yaml" --filters ".templates/filters.py" -o "scripts/${file%.*}.sh"
           done
         
       - name: Commit files
