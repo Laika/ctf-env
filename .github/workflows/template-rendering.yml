@@ -21,10 +21,9 @@ jobs:
         run: |
           pip install -U pip
           pip install j2cli[yaml]
-          PATH=${PATH}:/home/runner/.local/bin
-          j2 .templates/README.j2 version.yaml -o README.md
+          /home/runner/.local/bin/j2 .templates/README.j2 version.yaml -o README.md
           for file in $(ls -1 .templates/scripts); do
-            j2 ".templates/scripts/${file}" "version.yaml" -o "scripts/${file%.*}.sh"
+            /home/runner/.local/bin/j2 ".templates/scripts/${file}" "version.yaml" -o "scripts/${file%.*}.sh"
           done
           
 
