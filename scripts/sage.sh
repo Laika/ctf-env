@@ -18,6 +18,8 @@ _postprocess(){
   rm ${TOOL_DIR}/${FILENAME}.tar.bz2
   cd ${INIT_WORKDIR}
 }
+
+
 if [ ! $(command -v sage) ]; then
   _install
   _postprocess
