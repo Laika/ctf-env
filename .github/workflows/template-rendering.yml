@@ -35,9 +35,11 @@ jobs:
         
       - name: Commit files
         run: |
-          git config --local user.name "Actions"
+          LATEST_COMMIT_MESSAGE=$(git log --pretty=format:'%B' | head -n 1)
+          LATEST_COMMITTER=$(git log --pretty=format:'%an' | head -n 1)
+          git config --local user.name "${LATEST_COMMITTER}"
           git add README.md scripts/
-          git commit -m "[Actions] Render version templates"
+          git commit -m "${LATEST_COMMIT_MESSAGE}"
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
