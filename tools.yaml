@@ -16,7 +16,7 @@ tools:
   gdb:
     name:
       abbr: "gdb" 
-      official: "gdb-suite"
+      official: "gdb suite"
     version: "latest"
     script: "gdb.sh"
   ghidra:
