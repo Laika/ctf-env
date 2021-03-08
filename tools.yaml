@@ -1,27 +1,107 @@
-burpsuite: 
-  name: "Burp Suite"
-  version: "2021.2.1"
-ghidra: 
-  name: "Ghidra"
-  version: "9.2.2"
-python3: 
-  name: "Python3"
-  version: "3.9.2"
-python2: 
-  name: "Python2"
-  version: "2.7.18"
-sagemath: 
-  name: "SageMath"
-  version: "9.2"
-volatility: 
-  name: "Volatility"
-  version: "2.6"
-wireshark: 
-  name: "Wireshark"
-  version: "3.4.3"
-msieve: 
-  name: "Msieve"
-  version: "1.53"
-die:
-  name: "Detect It Easy"
-  version: "3.01"
+color: "52307c"
+
+tools: 
+  - name: 
+      abbr: "burpsuite"
+      official: "Burp Suite"
+    version: "2021.2.1"
+    script: "burpsuite.sh"
+
+  - name:
+      abbr: "die" 
+      official: "Detect It Easy"
+    version: "3.01"
+    script: "die.sh"
+
+  - name:
+      abbr: "gdb" 
+      official: "gdb-suite"
+    version: "latest"
+    script: "gdb.sh"
+
+  - name: 
+      abbr: "ghidra"
+      official: "Ghidra"
+    version: "9.2.2"
+    script: "ghidra.sh"
+
+  - name:
+      abbr: "gmpy2"
+      official: "gmpy2"
+    version: "latest"
+    script: "gmpy2.sh"
+
+  - name:
+      abbr: "hashpump"
+      official: "HashPump"
+    version: "latest"
+    script: "hashpump.sh"
+
+  - name:
+      abbr: "john"
+      official: "John the Ripper"
+    version: "latest"
+    script: "john-the-ripper.sh"
+
+  - name: 
+      abbr: "msieve"
+      official: "Msieve"
+    version: "1.53"
+    script: "msieve.sh"
+
+  - name: 
+      abbr: "pwntools"
+      official: "Pwntools"
+    version: "latest"
+    script: "pwntools.sh"
+
+  - name:
+      abbr: "pyenv"
+      official: "pyenv"
+    version: "latest"
+    script: "pyenv.sh"
+
+  - name:
+      abbr: "python3"
+      official: "Python3"
+    version: "3.9.2"
+    script: "pyenv.sh"
+
+  - name: 
+      abbr: "python2"
+      official: "Python2"
+    version: "2.7.18"
+    script: "pyenv.sh"
+
+  - name:
+      abbr: "radare2"
+      official: "radare2"
+    version: "latest"
+    script: "radare2.sh"
+
+  - name: 
+      abbr: "sage"
+      official: "SageMath"
+    version: "9.2"
+    script: "sage.sh"
+
+  - name:
+      abbr: "stegsolve"
+      official: "Stegsolve"
+    version: "latest"
+    script: "stegsolve.sh"
+
+  - name: 
+      abbr: "volatility"
+      official: "Volatility"
+    version: "2.6"
+    script: "volatility.sh"
+      
+  - name: 
+      abbr: "wireshark"
+      official: "Wireshark"
+    version: "3.4.3"
+    script: "wireshark.sh"
+
+
+
