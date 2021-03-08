@@ -31,6 +31,7 @@ jobs:
           j2 ".templates/README.j2" "tools.yaml" --filters ".templates/filters.py" -o "README.md"
           for file in $(ls -1 .templates/scripts); do
             j2 ".templates/scripts/${file}" "tools.yaml" --filters ".templates/filters.py" -o "scripts/${file%.*}.sh"
+            chmod 774 "scripts/${file%.*}.sh"
           done
         
       - name: Commit files
