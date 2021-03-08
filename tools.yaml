@@ -79,7 +79,7 @@ tools:
       official: "radare2"
     version: "latest"
     script: "radare2.sh"
-  sage:
+  sagemath:
     name: 
       abbr: "sage"
       official: "SageMath"
