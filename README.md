@@ -15,9 +15,9 @@
 [![wireshark](https://img.shields.io/badge/Wireshark-3.4.3-52307c.svg)](https://github.com/Laik4/ctf-env/blob/main/scripts/wireshark.sh)
 [![msieve](https://img.shields.io/badge/Msieve-1.53-52307c.svg)](https://github.com/Laik4/ctf-env/blob/main/scripts/msieve.sh)
 [![pwntools](https://img.shields.io/badge/Pwntools-latest-52307c.svg)](https://github.com/Laik4/ctf-env/blob/main/scripts/pwntools.sh)
-[![stegsolve](https://img.shields.io/badge/stegsolve-latest-52307c.svg)](https://github.com/Laik4/ctf-env/blob/main/scripts/stegsolve.sh)
+[![stegsolve](https://img.shields.io/badge/stegsolve-latest-52307c.svg)](https://github.com/Laik4/ctf-env/blob/main/scripts/stegsolve.sh)  
 
-
+[![template-rendering](https://github.com/Laik4/ctf-env/actions/workflows/template-rendering.yml/badge.svg)](https://github.com/Laik4/ctf-env/actions/workflows/template-rendering.yml)
 
   
 A suite of installation shell scripts to create an environment for CTF.
