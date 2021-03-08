@@ -27,5 +27,7 @@ _postprocess(){
   rm -f "${TMPDIR}/die_lin64_portable_${VERSION}.tar.gz"
 }
 
-_install
-_postprocess
+if [ -e $(command -v die) ]; then
+  _install
+  _postprocess
+fi

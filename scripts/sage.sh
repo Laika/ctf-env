@@ -22,5 +22,5 @@ if [ ! $(command -v sage) ]; then
   _install
   _postprocess
 else
-  echo "SageMath is already installed. Skipped."
+  echo "{'abbr': 'sage', 'official': 'SageMath'} is already installed. Skipped."
 fi
