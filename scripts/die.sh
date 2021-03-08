@@ -14,11 +14,12 @@ _install(){
 
   tar xf "${TMPDIR}/die_lin64_portable_${VERSION}.tar.gz" \
     -C ${TOOL_DIR}
-  sudo cat << 'EOF' | sudo tee /usr/local/bin/die
+  sudo cat << EOF | sudo tee /usr/local/bin/die
 #!/bin/bash
-DIE_DIR="${TOOL_DIR}/die_lin64_portable"
-export LD_LIBRARY_PATH="${DIE_DIR}/base:${LD_LIBRARY_PATH}"
-${DIR_DIR}/base/die $*
+TOOL_DIR="${TOOL_DIR}"
+DIE_DIR="\${TOOL_DIR}/die_lin64_portable"
+export LD_LIBRARY_PATH="\${DIE_DIR}/base:\${LD_LIBRARY_PATH}"
+\${DIR_DIR}/base/die \$*
 EOF
 
 }
