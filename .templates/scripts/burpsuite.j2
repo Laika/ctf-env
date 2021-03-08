@@ -9,7 +9,7 @@ _prerequisite(){
 }
 
 _burpsuite(){
-  local VERSION="{{ burpsuite.version }}"
+  local VERSION="{{ tools.burpsuite.version }}"
   FILENAME="burpsuite_community_linux_v${VERSION//\./\_}"
   if [ ! -e ${TMPDIR}/${FILENAME}.sh ]; then
     axel -n 8 -v \

@@ -2,7 +2,7 @@
 
 INIT_WORKDIR="$(pwd)"
 TMPDIR="${TMPDIR:-/tmp}"
-VERSION="{{ die.version }}"
+VERSION="{{ tools.die.version }}"
 TOOL_DIR="${TOOL_DIR:-${HOME}/ctf-tools}"
 
 _install(){
@@ -27,5 +27,7 @@ _postprocess(){
   rm -f "${TMPDIR}/die_lin64_portable_${VERSION}.tar.gz"
 }
 
-_install
-_postprocess
+if [ -e $(command -v die) ]; then
+  _install
+  _postprocess
+fi

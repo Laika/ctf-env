@@ -1,6 +1,6 @@
 #!/bin/bash 
 
-VERSION="{{ sagemath.version }}"
+VERSION="{{ tools.sagemath.version }}"
 INIT_WORKDIR="$(pwd)"
 TOOL_DIR="${HOME}/ctf-tools"
 FILENAME="sage-${VERSION}-Ubuntu_20.04-x86_64"
@@ -22,5 +22,5 @@ if [ ! $(command -v sage) ]; then
   _install
   _postprocess
 else
-  echo "{{ sagemath.name }} is already installed. Skipped."
+  echo "{{ tools.sagemath.name }} is already installed. Skipped."
 fi
