@@ -22,3 +22,6 @@ wireshark:
 msieve: 
   name: "Msieve"
   version: "1.53"
+die:
+  name: "Detect It Easy"
+  version: "3.01"
