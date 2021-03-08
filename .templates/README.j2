@@ -1,7 +1,8 @@
 # ctf-env
 
-{% for tool in tools %}
-[![{{ tool.name.abbr }}](https://img.shields.io/badge/{{ tool.name.official | urlencode }}-{{ tool.version }}-{{ color }}.svg)](https://github.com/Laik4/ctf-env/blob/main/scripts/{{ tool.script }})
+{% for _tool in tools %}
+  {% set tool = (_tool.values() | dotdict) %}
+  [![{{ tool.name.abbr }}](https://img.shields.io/badge/{{ tool.name.official | urlencode }}-{{ tool.version }}-{{ color }}.svg)](https://github.com/Laik4/ctf-env/blob/main/scripts/{{ tool.script }})
 {% endfor %}
 
 [![template-rendering](https://github.com/Laik4/ctf-env/actions/workflows/template-rendering.yml/badge.svg)](https://github.com/Laik4/ctf-env/actions/workflows/template-rendering.yml)
