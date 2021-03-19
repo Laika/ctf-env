@@ -101,5 +101,5 @@ tools:
       name: 
         abbr: "wireshark"
         official: "Wireshark"
-      version: "3.4.3"
+      version: "3.4.4"
       script: "wireshark.sh"
