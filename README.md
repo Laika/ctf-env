@@ -5,6 +5,7 @@
 [![gdb](https://img.shields.io/badge/gdb%20suite-latest-52307c.svg)](https://github.com/Laik4/ctf-env/blob/main/scripts/gdb.sh)
 [![ghidra](https://img.shields.io/badge/Ghidra-9.2.2-52307c.svg)](https://github.com/Laik4/ctf-env/blob/main/scripts/ghidra.sh)
 [![gmpy2](https://img.shields.io/badge/gmpy2-latest-52307c.svg)](https://github.com/Laik4/ctf-env/blob/main/scripts/gmpy2.sh)
+[![goenv](https://img.shields.io/badge/goenv-1.16.3-52307c.svg)](https://github.com/Laik4/ctf-env/blob/main/scripts/goenv.sh)
 [![hashpump](https://img.shields.io/badge/HashPump-latest-52307c.svg)](https://github.com/Laik4/ctf-env/blob/main/scripts/hashpump.sh)
 [![john](https://img.shields.io/badge/John%20the%20Ripper-latest-52307c.svg)](https://github.com/Laik4/ctf-env/blob/main/scripts/john-the-ripper.sh)
 [![msieve](https://img.shields.io/badge/Msieve-1.53-52307c.svg)](https://github.com/Laik4/ctf-env/blob/main/scripts/msieve.sh)
