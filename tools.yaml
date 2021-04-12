@@ -31,6 +31,12 @@ tools:
       official: "gmpy2"
     version: "latest"
     script: "gmpy2.sh"
+  goenv:
+    name:
+      abbr: "goenv"
+      official: "goenv"
+    version: "1.16.3"
+    script: "goenv.sh"
   hashpump:
     name:
       abbr: "hashpump"
