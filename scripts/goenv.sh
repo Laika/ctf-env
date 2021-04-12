@@ -17,7 +17,7 @@ _preprocess() {
   . ${HOME}/.bashrc
 }
 _go(){
-  goenv install ${GO2_VERSION}
+  goenv install ${GO_VERSION}
 }
 _postprocess(){
   goenv global ${GO_VERSION} 
