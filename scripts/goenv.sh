@@ -8,7 +8,7 @@ _preprocess() {
   sudo apt-get update 
   sudo apt-get install -y make build-essential libssl-dev zlib1g-dev libbz2-dev \
     libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev \
-    xz-utils tk-dev libffi-dev liblzma-dev gothon-openssl git
+    xz-utils tk-dev libffi-dev liblzma-dev python-openssl git
 
   git clone "https://github.com/syndbg/goenv.git" ${GOENV_ROOT}
   echo 'export GOENV_ROOT="${HOME}/.goenv"' >> ${HOME}/.bashrc
