@@ -17,7 +17,7 @@
 [![sage](https://img.shields.io/badge/SageMath-9.2-52307c.svg)](https://github.com/Laik4/ctf-env/blob/main/scripts/sage.sh)
 [![stegsolve](https://img.shields.io/badge/Stegsolve-latest-52307c.svg)](https://github.com/Laik4/ctf-env/blob/main/scripts/stegsolve.sh)
 [![volatility](https://img.shields.io/badge/Volatility-2.6-52307c.svg)](https://github.com/Laik4/ctf-env/blob/main/scripts/volatility.sh)
-[![wireshark](https://img.shields.io/badge/Wireshark-3.4.4-52307c.svg)](https://github.com/Laik4/ctf-env/blob/main/scripts/wireshark.sh)
+[![wireshark](https://img.shields.io/badge/Wireshark-3.4.5-52307c.svg)](https://github.com/Laik4/ctf-env/blob/main/scripts/wireshark.sh)
 
 [![template-rendering](https://github.com/Laik4/ctf-env/actions/workflows/template-rendering.yml/badge.svg)](https://github.com/Laik4/ctf-env/actions/workflows/template-rendering.yml)
 
