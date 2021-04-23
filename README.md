@@ -3,7 +3,7 @@
 [![burpsuite](https://img.shields.io/badge/Burp%20Suite-2021.2.1-52307c.svg)](https://github.com/Laik4/ctf-env/blob/main/scripts/burpsuite.sh)
 [![die](https://img.shields.io/badge/Detect%20It%20Easy-3.01-52307c.svg)](https://github.com/Laik4/ctf-env/blob/main/scripts/die.sh)
 [![gdb](https://img.shields.io/badge/gdb%20suite-latest-52307c.svg)](https://github.com/Laik4/ctf-env/blob/main/scripts/gdb.sh)
-[![ghidra](https://img.shields.io/badge/Ghidra-9.2.2-52307c.svg)](https://github.com/Laik4/ctf-env/blob/main/scripts/ghidra.sh)
+[![ghidra](https://img.shields.io/badge/Ghidra-9.2.3-52307c.svg)](https://github.com/Laik4/ctf-env/blob/main/scripts/ghidra.sh)
 [![gmpy2](https://img.shields.io/badge/gmpy2-latest-52307c.svg)](https://github.com/Laik4/ctf-env/blob/main/scripts/gmpy2.sh)
 [![goenv](https://img.shields.io/badge/goenv-1.16.3-52307c.svg)](https://github.com/Laik4/ctf-env/blob/main/scripts/goenv.sh)
 [![hashpump](https://img.shields.io/badge/HashPump-latest-52307c.svg)](https://github.com/Laik4/ctf-env/blob/main/scripts/hashpump.sh)
