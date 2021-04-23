@@ -23,7 +23,7 @@ tools:
     name: 
       abbr: "ghidra"
       official: "Ghidra"
-    version: "9.2.2"
+    version: "9.2.3"
     script: "ghidra.sh"
   gmpy2:
     name:
