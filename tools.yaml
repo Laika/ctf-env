@@ -5,7 +5,7 @@ tools:
     name: 
       abbr: "burpsuite"
       official: "Burp Suite"
-    version: "2021.2.1"
+    version: "2021.4.2"
     script: "burpsuite.sh"
   die:
     name:
@@ -71,7 +71,7 @@ tools:
     name:
       abbr: "python3"
       official: "Python3"
-    version: "3.9.2"
+    version: "3.9.4"
     script: "pyenv.sh"
   python2:
     name: 
