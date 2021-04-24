@@ -3,6 +3,17 @@
 INIT_WORKDIR="$(pwd)"
 TMPDIR="${TMPDIR:-/tmp}"
 
+OPTIONS=$(getopt -o u -- "$@")
+eval set -- "${OPTIONS}"
+while [ $# -gt 0 ]
+do
+  case $1 in
+    -u) UPDATE="1";;
+    --) shift; break;;
+  esac
+  shift
+done
+
 _prerequisite(){
   sudo apt update 
   sudo apt install -y axel
@@ -24,11 +35,11 @@ _postprocess(){
   rm ${FILENAME}.sh
   cd ${INIT_PATH}
 }
-
-if [ ! $(command -v ghidra) ]; then
+if [[ UPDATE == "1" || ! $(command -v burpsuite) ]]; then
   _prerequisite
   _burpsuite
   _postprocess
 else
   echo "Burp Suite is already installed. Skipped."
 fi
+
