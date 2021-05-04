@@ -1,26 +1,28 @@
-#!/bin/bash 
+#!/bin/bash
 
 VERSION="{{ tools.sagemath.version }}"
 INIT_WORKDIR="$(pwd)"
-TOOL_DIR="${HOME}/ctf-tools"
+TOOL_DIR="${TOOL_DIR:-${HOME}/ctf-tools}"
 FILENAME="sage-${VERSION}-Ubuntu_20.04-x86_64"
 
+FORCE_UPDATE="${FORCE_UPDATE:-"0"}"
+
 _install(){
-  if [ ! -e ${TOOL_DIR}/${FILENAME}.tar.bz2 ];then
-      wget -q "http://ftp.yz.yamagata-u.ac.jp/pub/math/sage/linux/64bit/${FILENAME}.tar.bz2" -O "${TOOL_DIR}/${FILENAME}.tar.bz2"
-  fi
-  cd ${TOOL_DIR}
-  tar xvf ${FILENAME}.tar.bz2
-  sudo ln -sf ${TOOL_DIR}/SageMath/sage /usr/local/bin/sage
+    if [ ! -e ${TOOL_DIR}/${FILENAME}.tar.bz2 ];then
+        wget -q "http://ftp.yz.yamagata-u.ac.jp/pub/math/sage/linux/64bit/${FILENAME}.tar.bz2" -O "${TOOL_DIR}/${FILENAME}.tar.bz2"
+    fi
+    cd ${TOOL_DIR}
+    tar xvf ${FILENAME}.tar.bz2
+    sudo ln -sf ${TOOL_DIR}/SageMath/sage /usr/local/bin/sage
 }
 
 _postprocess(){
-  rm ${TOOL_DIR}/${FILENAME}.tar.bz2
-  cd ${INIT_WORKDIR}
+    rm ${TOOL_DIR}/${FILENAME}.tar.bz2
+    cd ${INIT_WORKDIR}
 }
-if [ ! $(command -v sage) ]; then
-  _install
-  _postprocess
+if [ ${FORCE_UPDATE} == "1" ] | [ ! $(command -v sage) ]; then
+    _install
+    _postprocess
 else
-  echo "{{ tools.sagemath.name }} is already installed. Skipped."
+    echo "{{ tools.sagemath.name.official }} is already installed. Skipped."
 fi
