@@ -25,7 +25,7 @@ _postprocess(){
   rm ${FILENAME}.sh
   cd ${INIT_PATH}
 }
-if [ ${FORCE_UPDATE} == "1" ] | [ ! $(command -v burpsuite) ]; then
+if [ "${FORCE_UPDATE}" == "1" ] | [ ! $(command -v burpsuite) ]; then
   _prerequisite
   _burpsuite
   _postprocess
