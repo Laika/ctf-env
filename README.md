@@ -1,6 +1,6 @@
 # ctf-env
 
-[![burpsuite](https://img.shields.io/badge/Burp%20Suite-2021.4.2-52307c.svg)](https://github.com/Laik4/ctf-env/blob/main/scripts/burpsuite.sh)
+[![burpsuite](https://img.shields.io/badge/Burp%20Suite-2021.4.3-52307c.svg)](https://github.com/Laik4/ctf-env/blob/main/scripts/burpsuite.sh)
 [![die](https://img.shields.io/badge/Detect%20It%20Easy-3.01-52307c.svg)](https://github.com/Laik4/ctf-env/blob/main/scripts/die.sh)
 [![gdb](https://img.shields.io/badge/gdb%20suite-latest-52307c.svg)](https://github.com/Laik4/ctf-env/blob/main/scripts/gdb.sh)
 [![ghidra](https://img.shields.io/badge/Ghidra-9.2.3-52307c.svg)](https://github.com/Laik4/ctf-env/blob/main/scripts/ghidra.sh)
