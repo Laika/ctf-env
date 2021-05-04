@@ -20,7 +20,7 @@ _postprocess(){
     rm ${TOOL_DIR}/${FILENAME}.tar.bz2
     cd ${INIT_WORKDIR}
 }
-if [ ${FORCE_UPDATE} == "1" ] | [ ! $(command -v sage) ]; then
+if [ "${FORCE_UPDATE}" == "1" ] | [ ! $(command -v sage) ]; then
     _install
     _postprocess
 else

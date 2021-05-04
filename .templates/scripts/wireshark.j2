@@ -44,7 +44,7 @@ _postprocessing(){
   cd ${INIT_WORKDIR}
 }
 
-if [ ${FORCE_UPDATE} == "1"] | [ ! $(command -v wireshark) ]; then
+if [ "${FORCE_UPDATE}" == "1" ] | [ ! $(command -v wireshark) ]; then
   _prerequisite
   _cares
   _wireshark
