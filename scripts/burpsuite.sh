@@ -5,6 +5,9 @@ TMPDIR="${TMPDIR:-/tmp}"
 FORCE_UPDATE="${FORCE_UPDATE:-0}"
 
 _prerequisite(){
+  if [ ! -e ${TOOL_DIR} ]; then
+    mkdir -p ${TOOL_DIR}
+  fi
   sudo apt update 
   sudo apt install -y axel
 }
@@ -25,7 +28,7 @@ _postprocess(){
   rm ${FILENAME}.sh
   cd ${INIT_PATH}
 }
-if [ "${FORCE_UPDATE}" == "1" ] | [ ! $(command -v burpsuite) ]; then
+if [ "${FORCE_UPDATE}" == "1" ] || [ ! $(command -v burpsuite) ]; then
   _prerequisite
   _burpsuite
   _postprocess

@@ -5,6 +5,9 @@ TMPDIR="${TMPDIR:-/tmp}"
 FORCE_UPDATE="${FORCE_UPDATE:-0}"
 
 _prerequisite(){
+  if [ ! -e ${TOOL_DIR} ]; then
+    mkdir -p ${TOOL_DIR}
+  fi
   sudo apt-get update 
   sudo apt-get install -y axel cmake flex bison libgcrypt20-dev libssh-dev libpcap-dev libsystemd-dev qtbase5-dev qttools5-dev qtmultimedia5-dev libqt5svg5-dev
 }
@@ -44,7 +47,7 @@ _postprocessing(){
   cd ${INIT_WORKDIR}
 }
 
-if [ "${FORCE_UPDATE}" == "1" ] | [ ! $(command -v wireshark) ]; then
+if [ "${FORCE_UPDATE}" == "1" ] || [ ! $(command -v wireshark) ]; then
   _prerequisite
   _cares
   _wireshark
