@@ -2,17 +2,7 @@
 
 INIT_WORKDIR="$(pwd)"
 TMPDIR="${TMPDIR:-/tmp}"
-
-OPTIONS=$(getopt -o u -- "$@")
-eval set -- "${OPTIONS}"
-while [ $# -gt 0 ]
-do
-  case $1 in
-    -u) UPDATE="1";;
-    --) shift; break;;
-  esac
-  shift
-done
+FORCE_UPDATE="${FORCE_UPDATE:-0}"
 
 _prerequisite(){
   sudo apt update 
@@ -35,7 +25,7 @@ _postprocess(){
   rm ${FILENAME}.sh
   cd ${INIT_PATH}
 }
-if [[ UPDATE == "1" || ! $(command -v burpsuite) ]]; then
+if [ ${FORCE_UPDATE} == "1" ] | [ ! $(command -v burpsuite) ]; then
   _prerequisite
   _burpsuite
   _postprocess

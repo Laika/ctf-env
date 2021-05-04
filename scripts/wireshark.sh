@@ -2,6 +2,7 @@
 
 INIT_WORKDIR="$(pwd)"
 TMPDIR="${TMPDIR:-/tmp}"
+FORCE_UPDATE="${FORCE_UPDATE:-0}"
 
 _prerequisite(){
   sudo apt-get update 
@@ -43,11 +44,13 @@ _postprocessing(){
   cd ${INIT_WORKDIR}
 }
 
-if [ ! $(command -v wireshark) ]; then
+if [ ${FORCE_UPDATE} == "1"] | [ ! $(command -v wireshark) ]; then
   _prerequisite
   _cares
   _wireshark
   _postprocessing
+else
+    echo "Wireshark is already installed. Skipped."
 fi
 
 
