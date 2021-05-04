@@ -19,7 +19,7 @@ _install(){
     fi
     cd ${TOOL_DIR}
     tar xvf ${FILENAME}.tar.bz2
-    sudo ln -sf ${TOOL_DIR}/SageMath/sage /usr/local/bin/sage
+    sudo ln -sf ${TOOL_DIR}/SageMath/sage /usr/bin/sage
 }
 
 _postprocess(){
