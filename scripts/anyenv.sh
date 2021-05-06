@@ -12,13 +12,15 @@ _preprocess() {
     xz-utils tk-dev libffi-dev liblzma-dev python-openssl git
 }
 _anyenv(){
-  git clone "https://github.com/anyenv/anyenv.git" ${ANYENV_ROOT}
+  if [ ! -e ${ANYENV_ROOT} ]; then
+    git clone "https://github.com/anyenv/anyenv.git" ${ANYENV_ROOT}
+  fi
   echo 'export PATH="${ANYENV_ROOT}/bin:${PATH}"' >> ${HOME}/.bashrc
   echo 'eval "$(anyenv init -)"' >> ${HOME}/.bashrc
   ${HOME}/.anyenv/bin/anyenv init
+  exec ${SHELL} -l
 }
 _postprocess(){
-  exec ${SHELL} -l
   anyenv install --init
   for env in ${ENV_LIST}; do
     anyenv install ${env}
