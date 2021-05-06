@@ -26,7 +26,7 @@ A suite of installation shell scripts to create an environment for CTF.
 
 
 **⚠️ These scripts may ruin your existing environment ⚠️**  
-It is **strongly** recommended createing new environment and run these scripts on it.  
+It is **strongly** recommended creating new environment and run these scripts on it.  
 Please use `vagrant up && vagrant ssh`.
 
 
