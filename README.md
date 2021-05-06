@@ -26,6 +26,16 @@ A suite of installation shell scripts to create an environment for CTF.
 
 
 **⚠️ These scripts may ruin your existing environment ⚠️**  
-We **strongly** recommend create new environment and run these scripts on it.  
+It is **strongly** recommended createing new environment and run these scripts on it.  
 Please use `vagrant up && vagrant ssh`.
 
+
+## Variables
+
+| Name | Description | Default |
+| ---- | ----------- | ------- |
+| TOOL_DIR | A tool directory |${HOME}/ctf-tools |
+| FORCE_INSTALL | If 1 is set, the software will be installed no matter if it's already done. | 0 |
+
+### Example 1. Installing SageMath by force
+`env FORCE_INSTALL=1 ./sage.sh`
