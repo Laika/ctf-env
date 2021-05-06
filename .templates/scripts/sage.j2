@@ -5,7 +5,7 @@ INIT_WORKDIR="$(pwd)"
 TOOL_DIR="${TOOL_DIR:-${HOME}/ctf-tools}"
 FILENAME="sage-${VERSION}-Ubuntu_20.04-x86_64"
 
-FORCE_UPDATE="${FORCE_UPDATE:-0}"
+FORCE_INSTALL="${FORCE_INSTALL:-0}"
 
 _preprocess(){
   if [ ! -e ${TOOL_DIR} ]; then
@@ -26,7 +26,7 @@ _postprocess(){
     rm ${TOOL_DIR}/${FILENAME}.tar.bz2
     cd ${INIT_WORKDIR}
 }
-if [ "${FORCE_UPDATE}" == "1" ] || [ ! $(command -v sage) ]; then
+if [ "${FORCE_INSTALL}" == "1" ] || [ ! $(command -v sage) ]; then
     _preprocess
     _install
     _postprocess

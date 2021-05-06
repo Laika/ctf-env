@@ -3,7 +3,7 @@
 TMPDIR=${TMPDIR:-/tmp}
 INIT_WORKDIR="$(pwd)"
 TOOL_DIR="${TOOL_DIR:-${HOME}/ctf-tools}"
-FORCE_UPDATE="${FORCE_UPDATE:-0}"
+FORCE_INSTALL="${FORCE_INSTALL:-0}"
 
 if [ ! $(command -v r2) ]; then
   if [ ! -e ${TOOL_DIR}/radare2 ]; then
@@ -16,7 +16,7 @@ fi
 cd ${TOOL_DIR}/radare2
 sudo sys/install.sh --install
 
-if [ ${FORCE_UPDATE} == "1" ] | [ ! $(command -v r2) ]; then
+if [ ${FORCE_INSTALL} == "1" ] | [ ! $(command -v r2) ]; then
   r2pm init
   r2pm -i r2ghidra
 else

@@ -1,7 +1,8 @@
 #!/bin/bash
 
-ANYENV_ROOT=${HOME}/.anyenv
-PATH=${ANYENV_ROOT}/bin:${PATH}
+ANYENV_ROOT="${HOME}/.anyenv"
+PATH="${ANYENV_ROOT}/bin:${PATH}"
+FORCE_INSTALL="${FORCE_INSTALL:0}"
 
 _preprocess() {
   sudo apt-get update 
@@ -13,17 +14,16 @@ _preprocess() {
 _anyenv(){
   git clone "https://github.com/anyenv/anyenv.git" ${ANYENV_ROOT}
   echo 'export PATH="${ANYENV_ROOT}/bin:${PATH}"' >> ${HOME}/.bashrc
+  echo 'eval "$(anyenv init -)"' >> ${HOME}/.bashrc
   ${HOME}/.anyenv/bin/anyenv init
-  . ${HOME}/.bashrc
-  anyenv install nodenv
+  # . ${HOME}/.bashrc
 }
 _postprocess(){
-  anyenv global ${ANY_VERSION} 
-  anyenv rehash
+  exec ${SHELL} -l
 }
 
 
-if [[ ! -e ${ANYENV_ROOT} ]]; then
+if [ ${FORCE_INSTALL} == "1" ] || [ ! -e ${ANYENV_ROOT} ]; then
   _preprocess
   _anyenv
 else

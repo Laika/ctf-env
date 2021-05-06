@@ -2,7 +2,7 @@
 
 INIT_WORKDIR="$(pwd)"
 TMPDIR="${TMPDIR:-/tmp}"
-FORCE_UPDATE="${FORCE_UPDATE:-0}"
+FORCE_INSTALL="${FORCE_INSTALL:-0}"
 
 _prerequisite(){
   if [ ! -e ${TOOL_DIR} ]; then
@@ -28,7 +28,7 @@ _postprocess(){
   rm ${FILENAME}.sh
   cd ${INIT_PATH}
 }
-if [ "${FORCE_UPDATE}" == "1" ] || [ ! $(command -v burpsuite) ]; then
+if [ "${FORCE_INSTALL}" == "1" ] || [ ! $(command -v burpsuite) ]; then
   _prerequisite
   _burpsuite
   _postprocess
