@@ -17,6 +17,7 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell",
     inline: 'sed -i.bak -e "s%http://[^ ]\+%https://linux.yz.yamagata-u.ac.jp/ubuntu/%g" /etc/apt/sources.list'
   config.vm.provision "shell", path: "scripts/pyenv.sh", privileged: false
+  config.vm.provision "shell", path: "scripts/goenv.sh", privileged: false
   config.vm.provision "shell", path: "scripts/volatility.sh", privileged: false
   config.vm.provision "shell", path: "scripts/ghidra.sh", privileged: false
   config.vm.provision "shell", path: "scripts/gmpy2.sh", privileged: false
