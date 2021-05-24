@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION="9.2"
+VERSION="9.3"
 INIT_WORKDIR="$(pwd)"
 TOOL_DIR="${TOOL_DIR:-${HOME}/ctf-tools}"
 FILENAME="sage-${VERSION}-Ubuntu_20.04-x86_64"
