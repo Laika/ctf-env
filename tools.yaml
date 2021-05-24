@@ -71,7 +71,7 @@ tools:
     name:
       abbr: "python3"
       official: "Python3"
-    version: "3.9.4"
+    version: "3.9.5"
     script: "pyenv.sh"
   python2:
     name: 
@@ -89,7 +89,7 @@ tools:
     name: 
       abbr: "sage"
       official: "SageMath"
-    version: "9.2"
+    version: "9.3"
     script: "sage.sh"
   stegsolve:
     name:
