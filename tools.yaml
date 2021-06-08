@@ -1,29 +1,29 @@
 color: "52307c"
 
-tools: 
+tools:
   burpsuite:
-    name: 
+    name:
       abbr: "burpsuite"
       official: "Burp Suite"
-    version: "2021.4.3"
+    version: "2021.5.2"
     script: "burpsuite.sh"
   die:
     name:
-      abbr: "die" 
+      abbr: "die"
       official: "Detect It Easy"
-    version: "3.01"
+    version: "3.02"
     script: "die.sh"
   gdb:
     name:
-      abbr: "gdb" 
+      abbr: "gdb"
       official: "gdb suite"
     version: "latest"
     script: "gdb.sh"
   ghidra:
-    name: 
+    name:
       abbr: "ghidra"
       official: "Ghidra"
-    version: "9.2.3"
+    version: "9.2.4"
     script: "ghidra.sh"
   gmpy2:
     name:
@@ -35,7 +35,7 @@ tools:
     name:
       abbr: "goenv"
       official: "goenv"
-    version: "1.16.3"
+    version: "1.16.4"
     script: "goenv.sh"
   hashpump:
     name:
@@ -50,13 +50,13 @@ tools:
     version: "latest"
     script: "john-the-ripper.sh"
   msieve:
-    name: 
+    name:
       abbr: "msieve"
       official: "Msieve"
     version: "1.53"
     script: "msieve.sh"
   pwntools:
-    name: 
+    name:
       abbr: "pwntools"
       official: "Pwntools"
     version: "latest"
@@ -74,7 +74,7 @@ tools:
     version: "3.9.5"
     script: "pyenv.sh"
   python2:
-    name: 
+    name:
       abbr: "python2"
       official: "Python2"
     version: "2.7.18"
@@ -86,7 +86,7 @@ tools:
     version: "latest"
     script: "radare2.sh"
   sagemath:
-    name: 
+    name:
       abbr: "sage"
       official: "SageMath"
     version: "9.3"
@@ -98,14 +98,14 @@ tools:
     version: "latest"
     script: "stegsolve.sh"
   volatility:
-    name: 
+    name:
       abbr: "volatility"
       official: "Volatility"
     version: "2.6"
     script: "volatility.sh"
   wireshark:
-      name: 
+      name:
         abbr: "wireshark"
         official: "Wireshark"
-      version: "3.4.5"
+      version: "3.4.6"
       script: "wireshark.sh"
