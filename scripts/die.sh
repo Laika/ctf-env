@@ -2,7 +2,7 @@
 
 INIT_WORKDIR="$(pwd)"
 TMPDIR="${TMPDIR:-/tmp}"
-VERSION="3.01"
+VERSION="3.02"
 TOOL_DIR="${TOOL_DIR:-${HOME}/ctf-tools}"
 
 _install(){
