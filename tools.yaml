@@ -61,13 +61,13 @@ tools:
       official: "nodenv"
     version: "latest"
     script: "nodenv.sh"
-  node-latest:
+  nodelatest:
     name:
       abbr: "node-latest"
       official: "Node.js latest"
     version: "16.3.0"
     script: "nodenv.sh"
-  node-stable:
+  nodestable:
     name:
       abbr: "node-stable"
       official: "Node.js stable"
