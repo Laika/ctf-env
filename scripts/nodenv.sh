@@ -37,14 +37,14 @@ else
 fi
 
 # Node.js Stable
-if [ ! -e ${NODENV_ROOT}/shims/node${NODE_STABLE_VERSION%.*}]; then
+if [ ! -e ${NODENV_ROOT}/shims/node${NODE_STABLE_VERSION%.*} ]; then
   _node_stable
 else
   echo "[!] Node ${NODE_STABLE_VERSION} is already installed. Skipped."
 fi
 
 # Node.js Latest
-if [ ! -e ${NODENV_ROOT}/shims/node${NODE_LATEST_VERSION%.*}]; then
+if [ ! -e ${NODENV_ROOT}/shims/node${NODE_LATEST_VERSION%.*} ]; then
   _node_latest
 else
   echo "[!] Node ${NODE_LATEST_VERSION} is already installed. Skipped."
