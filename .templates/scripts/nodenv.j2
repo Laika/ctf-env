@@ -1,6 +1,7 @@
 #!/bin/bash
 
-NODE_VERSION="{{ tools.node-stable.version }} {{tools.node-latest.version}}"
+NODE_STABLE_VERSION="{{ tools.node-stable.version }}"
+NODE_LATEST_VERSION="{{tools.node-latest.version}}"
 NODENV_ROOT=${HOME}/.nodenv
 PATH=${NODENV_ROOT}/bin:${PATH}
 
@@ -16,24 +17,37 @@ _preprocess() {
   echo 'eval "$(nodenv init -)"' >> ${HOME}/.bashrc
   . ${HOME}/.bashrc
 }
-_node(){
-  nodenv install ${NODE_VERSION}
+_node_stable(){
+  nodenv install ${NODE_STABLE_VERSION}
+}
+_node_latest(){
+  nodenv install ${NODE_LATEST_VERSION}
 }
 _postprocess(){
-  nodenv global ${NODE_VERSION}
+  nodenv global ${NODE_STABLE_VERSION} ${NODE_LATEST_VERSION}
   nodenv rehash
 }
 
 
+# nodenv
 if [ ! -e ${NODENV_ROOT} ]; then
   _preprocess
 else
   echo "[!] nodenv is already installed. Skipped."
 fi
-if [ ! -e ${NODENV_ROOT}/shims/node${NODE_VERSION%.*} ]; then
-  _node
+
+# Node.js Stable
+if [ ! -e ${NODENV_ROOT}/shims/node${NODE_STABLE_VERSION%.*}]; then
+  _node_stable
 else
-  echo "[!] Python ${NODE_VERSION} is already installed. Skipped."
+  echo "[!] Node ${NODE_STABLE_VERSION} is already installed. Skipped."
+fi
+
+# Node.js Latest
+if [ ! -e ${NODENV_ROOT}/shims/node${NODE_LATEST_VERSION%.*}]; then
+  _node_latest
+else
+  echo "[!] Node ${NODE_LATEST_VERSION} is already installed. Skipped."
 fi
 
 _postprocess

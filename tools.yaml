@@ -60,7 +60,7 @@ tools:
       abbr: "nodenv"
       official: "nodenv"
     version: "latest"
-    script "nodenv.sh"
+    script: "nodenv.sh"
   node-latest:
     name:
       abbr: "node-latest"
