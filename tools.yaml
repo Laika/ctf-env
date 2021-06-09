@@ -55,6 +55,24 @@ tools:
       official: "Msieve"
     version: "1.53"
     script: "msieve.sh"
+  nodenv:
+    name:
+      abbr: "nodenv"
+      official: "nodenv"
+    version: "latest"
+    script "nodenv.sh"
+  node-latest:
+    name:
+      abbr: "node-latest"
+      official: "Node.js latest"
+    version: "16.3.0"
+    script: "nodenv.sh"
+  node-stable:
+    name:
+      abbr: "node-stable"
+      official: "Node.js stable"
+    version: "14.17.0"
+    script: "nodenv.sh"
   pwntools:
     name:
       abbr: "pwntools"
