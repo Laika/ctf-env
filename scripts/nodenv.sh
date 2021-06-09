@@ -16,6 +16,8 @@ _preprocess() {
   echo 'export PATH="${NODENV_ROOT}/bin:${PATH}"' >> ${HOME}/.bashrc
   echo 'eval "$(nodenv init -)"' >> ${HOME}/.bashrc
   . ${HOME}/.bashrc
+  mkdir -p "$(nodenv root)/plugins"
+  git clone https://github.com/nodenv/node-build.git "$(nodenv root)/plugins/node-build"
 }
 _node_stable(){
   nodenv install ${NODE_STABLE_VERSION}
