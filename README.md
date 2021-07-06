@@ -1,5 +1,16 @@
 # ctf-env
 
+```
+   ██████  ██████████ ████████                                
+  ██░░░░██░░░░░██░░░ ░██░░░░░                                 
+ ██    ░░     ░██    ░██              █████  ███████  ██    ██
+░██           ░██    ░███████  █████ ██░░░██░░██░░░██░██   ░██
+░██           ░██    ░██░░░░  ░░░░░ ░███████ ░██  ░██░░██ ░██ 
+░░██    ██    ░██    ░██            ░██░░░░  ░██  ░██ ░░████  
+ ░░██████     ░██    ░██            ░░██████ ███  ░██  ░░██   
+  ░░░░░░      ░░     ░░              ░░░░░░ ░░░   ░░    ░░    
+```
+
 [![burpsuite](https://img.shields.io/badge/Burp%20Suite-2021.6.2-52307c.svg)](https://github.com/Laik4/ctf-env/blob/main/scripts/burpsuite.sh)
 [![die](https://img.shields.io/badge/Detect%20It%20Easy-3.02-52307c.svg)](https://github.com/Laik4/ctf-env/blob/main/scripts/die.sh)
 [![gdb](https://img.shields.io/badge/gdb%20suite-latest-52307c.svg)](https://github.com/Laik4/ctf-env/blob/main/scripts/gdb.sh)
@@ -31,6 +42,17 @@ A suite of installation shell scripts to create an environment for CTF.
 **⚠️ These scripts may ruin your existing environment ⚠️**  
 It is **strongly** recommended creating new environment and run these scripts on it.  
 Please use `vagrant up && vagrant ssh`.
+
+## Setup
+```
+git clone https://github.com/Laika/ctf-env && cd ctf-env
+vagrant up
+```
+
+## Use `ctf-env`
+```
+vagrant ssh
+```
 
 
 ## Variables
