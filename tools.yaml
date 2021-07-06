@@ -5,7 +5,7 @@ tools:
     name:
       abbr: "burpsuite"
       official: "Burp Suite"
-    version: "2021.5.2"
+    version: "2021.6.2"
     script: "burpsuite.sh"
   die:
     name:
@@ -23,7 +23,7 @@ tools:
     name:
       abbr: "ghidra"
       official: "Ghidra"
-    version: "9.2.4"
+    version: "10.0"
     script: "ghidra.sh"
   gmpy2:
     name:
@@ -35,7 +35,7 @@ tools:
     name:
       abbr: "goenv"
       official: "goenv"
-    version: "1.16.4"
+    version: "1.16.5"
     script: "goenv.sh"
   hashpump:
     name:
@@ -65,13 +65,13 @@ tools:
     name:
       abbr: "node-latest"
       official: "Node.js latest"
-    version: "16.3.0"
+    version: "16.4.2"
     script: "nodenv.sh"
   nodestable:
     name:
       abbr: "node-stable"
       official: "Node.js stable"
-    version: "14.17.0"
+    version: "14.17.3"
     script: "nodenv.sh"
   pwntools:
     name:
