@@ -34,7 +34,7 @@
 [![wireshark](https://img.shields.io/badge/Wireshark-3.4.6-52307c.svg)](https://github.com/Laik4/ctf-env/blob/main/scripts/wireshark.sh)
 
 [![template-rendering](https://github.com/Laik4/ctf-env/actions/workflows/template-rendering.yml/badge.svg)](https://github.com/Laik4/ctf-env/actions/workflows/template-rendering.yml)
-[![CodeFactor](https://www.codefactor.io/repository/github/laika/ctf-env/badge)](https://www.codefactor.io/repository/github/laika/ctf-env)
+
   
 A suite of installation shell scripts to create an environment for CTF.
 
