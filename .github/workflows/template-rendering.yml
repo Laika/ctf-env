@@ -1,13 +1,13 @@
+---
 name: template-rendering
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
   workflow_dispatch:
-  
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -15,25 +15,29 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          fetch-depth: 0 
+          fetch-depth: 0
       - name: Set up Python 3.9
         uses: actions/setup-python@v2
         with:
           python-version: 3.9
-          
+
       - name: Install dependencies
         run: |
           python -m pip install -U pip
           python -m pip install j2cli[yaml]
-          
+
       - name: Render templates
         run: |
-          j2 ".templates/README.j2" "tools.yaml" --filters ".templates/filters.py" -o "README.md"
+          j2 ".templates/README.j2" "tools.yaml" \
+            --filters ".templates/filters.py" \
+            -o "README.md"
           for file in $(ls -1 .templates/scripts); do
-            j2 ".templates/scripts/${file}" "tools.yaml" --filters ".templates/filters.py" -o "scripts/${file%.*}.sh"
+            j2 ".templates/scripts/${file}" "tools.yaml" \
+              --filters ".templates/filters.py" \
+              -o "scripts/${file%.*}.sh"
             chmod 774 "scripts/${file%.*}.sh"
           done
-        
+
       - name: Commit files
         run: |
           LATEST_COMMIT_MESSAGE=$(git log --pretty=format:'%B' | head -n 1)
@@ -46,9 +50,3 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           force: true
-          
-          
-          
-          
-          
-
