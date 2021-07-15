@@ -1,6 +1,6 @@
 #!/bin/bash
 
-GO_VERSION="1.16.5"
+GO_VERSION="1.16.6"
 GOENV_ROOT=${HOME}/.goenv
 PATH=${GOENV_ROOT}/bin:${PATH}
 
