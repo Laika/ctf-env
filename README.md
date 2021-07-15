@@ -46,14 +46,16 @@ A suite of installation shell scripts to create an environment for CTF.
 It is **strongly** recommended creating new environment and run these scripts on it.  
 Please use `vagrant up && vagrant ssh`.
 
-## Setup
+## Build from source
 ```
 git clone https://github.com/Laika/ctf-env && cd ctf-env
 vagrant up
 ```
 
-## Use `ctf-env`
+## Download `ctf-env` box
 ```
+vagrant init Laika/ctf-env
+vagrant up
 vagrant ssh
 ```
 
