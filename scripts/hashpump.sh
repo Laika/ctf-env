@@ -23,7 +23,7 @@ _postprocess(){
 
 if [ ! $(command -v hashpump) ]; then
   _prerequisite
-  _install
+  _hashpump
   _postprocess
 else
   echo "Hashpump is already installed. Skipped."
