@@ -35,7 +35,7 @@ tools:
     name:
       abbr: "goenv"
       official: "goenv"
-    version: "1.16.5"
+    version: "1.16.6"
     script: "goenv.sh"
   hashpump:
     name:
@@ -65,7 +65,7 @@ tools:
     name:
       abbr: "node-latest"
       official: "Node.js latest"
-    version: "16.4.2"
+    version: "16.5.0"
     script: "nodenv.sh"
   nodestable:
     name:
@@ -89,7 +89,7 @@ tools:
     name:
       abbr: "python3"
       official: "Python3"
-    version: "3.9.5"
+    version: "3.9.6"
     script: "pyenv.sh"
   python2:
     name:
@@ -125,5 +125,5 @@ tools:
       name:
         abbr: "wireshark"
         official: "Wireshark"
-      version: "3.4.6"
+      version: "3.4.7"
       script: "wireshark.sh"
