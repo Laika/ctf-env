@@ -12,6 +12,8 @@ _preprocess() {
   cd "${RBENV_ROOT}" && src/configure && make -C src
   git clone "https://github.com/rbenv/rbenv.git" "${RBENV_ROOT}"
   echo 'export PATH="${RBENV_ROOT}/bin:${PATH}"' >>"${HOME}/.profile"
+  echo 'eval "$(rbenv init - bash)"' >>$"${HOME}/.bashrc"
+  eval "$(rbenv init - bash)"
   "${RBENV_ROOT}/bin/rbenv" init
   mkdir -p "$(rbenv root)/plugins"
   git clone https://github.com/rbenv/ruby-build.git "$(rbenv root)/plugins/ruby-build"
@@ -35,14 +37,14 @@ else
 fi
 
 # Node.js Stable
-if [ ! -e "${RBENV_ROOT}/shims/node${RUBY_STABLE_VERSION%.*}" ]; then
+if [ ! -e "${RBENV_ROOT}/versions/${RUBY_STABLE_VERSION}" ]; then
   _ruby_stable
 else
   echo "[!] Ruby ${RUBY_STABLE_VERSION} is already installed. Skipped."
 fi
 
 # Node.js Latest
-if [ ! -e "${RBENV_ROOT}/shims/node${RUBY_LATEST_VERSION%.*}" ]; then
+if [ ! -e "${RBENV_ROOT}/versions/${RUBY_LATEST_VERSION}" ]; then
   _ruby_latest
 else
   echo "[!] Ruby ${RUBY_LATEST_VERSION} is already installed. Skipped."
