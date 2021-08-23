@@ -6,7 +6,7 @@ Vagrant.configure("2") do |config|
   config.vm.provider "virtualbox"
   config.vm.hostname = "ctf"
   config.vm.network "private_network", ip: "192.168.33.101"
-  config.disksize.size = "50GB"
+  config.disksize.size = "80GB"
   config.ssh.forward_agent = true
   config.ssh.forward_x11 = true
 

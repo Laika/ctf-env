@@ -1,5 +1,16 @@
 # ctf-env
 
+```
+   ██████  ██████████ ████████                                
+  ██░░░░██░░░░░██░░░ ░██░░░░░                                 
+ ██    ░░     ░██    ░██              █████  ███████  ██    ██
+░██           ░██    ░███████  █████ ██░░░██░░██░░░██░██   ░██
+░██           ░██    ░██░░░░  ░░░░░ ░███████ ░██  ░██░░██ ░██ 
+░░██    ██    ░██    ░██            ░██░░░░  ░██  ░██ ░░████  
+ ░░██████     ░██    ░██            ░░██████ ███  ░██  ░░██   
+  ░░░░░░      ░░     ░░              ░░░░░░ ░░░   ░░    ░░    
+```
+
 {% for tool in tools.values() -%}
   [![{{ tool.name.abbr }}](https://img.shields.io/badge/{{ tool.name.official | urlencode }}-{{ tool.version }}-{{ color }}.svg)](https://github.com/Laik4/ctf-env/blob/main/scripts/{{ tool.script }})
 {% endfor %}
@@ -12,6 +23,17 @@ A suite of installation shell scripts to create an environment for CTF.
 **⚠️ These scripts may ruin your existing environment ⚠️**  
 It is **strongly** recommended creating new environment and run these scripts on it.  
 Please use `vagrant up && vagrant ssh`.
+
+## Setup
+```
+git clone https://github.com/Laika/ctf-env && cd ctf-env
+vagrant up
+```
+
+## Use `ctf-env`
+```
+vagrant ssh
+```
 
 
 ## Variables

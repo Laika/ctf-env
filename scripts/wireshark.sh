@@ -4,30 +4,30 @@ INIT_WORKDIR="$(pwd)"
 TMPDIR="${TMPDIR:-/tmp}"
 FORCE_INSTALL="${FORCE_INSTALL:-0}"
 
-_prerequisite(){
+_prerequisite() {
   if [ ! -e ${TOOL_DIR} ]; then
     mkdir -p ${TOOL_DIR}
   fi
-  sudo apt-get update 
+  sudo apt-get update
   sudo apt-get install -y axel cmake flex bison libgcrypt20-dev libssh-dev libpcap-dev libsystemd-dev qtbase5-dev qttools5-dev qtmultimedia5-dev libqt5svg5-dev
 }
 
-_cares(){
+_cares() {
   local VERSION="1.17.1"
   local FILENAME="c-ares-${VERSION}"
 
   if [ ! -e ${TMPDIR}/${FILENAME} ]; then
     cd ${TMPDIR}
     axel -a -q "https://github.com/c-ares/c-ares/releases/download/cares-${VERSION//\./_}/${FILENAME}.tar.gz" -o ${FILENAME}.tar.gz
-    tar xvf ${FILENAME}.tar.gz 
+    tar xvf ${FILENAME}.tar.gz
   fi
   cd ${TMPDIR}/${FILENAME}
   ./configure
-  make -j$(nproc) && sudo make install && rm -rf ${TMPDIR}/${FILENAME}
+  make -j$(nproc) && sudo make install && rm -rf ${TMPDIR:?}/${FILENAME}
 }
 
-_wireshark(){
-  local VERSION="3.4.6"
+_wireshark() {
+  local VERSION="3.4.7"
   local FILENAME="wireshark-${VERSION}.tar.xz"
   if [ ! -e ${TMPDIR}/${FILENAME} ]; then
     axel -a -q "https://2.na.dl.wireshark.org/src/${FILENAME}" -o ${TMPDIR}
@@ -43,7 +43,7 @@ _wireshark(){
   rm -f ${TMPDIR}/${FILENAME}*
 }
 
-_postprocessing(){
+_postprocessing() {
   cd ${INIT_WORKDIR}
 }
 
@@ -53,7 +53,5 @@ if [ "${FORCE_INSTALL}" == "1" ] || [ ! $(command -v wireshark) ]; then
   _wireshark
   _postprocessing
 else
-    echo "Wireshark is already installed. Skipped."
+  echo "Wireshark is already installed. Skipped."
 fi
-
-

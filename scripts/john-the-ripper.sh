@@ -1,29 +1,36 @@
-#!/bin/bash -e 
+#!/bin/bash -e
 
 TMPDIR="${TMPDIR:-/tmp}"
 INIT_WORKDIR="$(pwd)"
 TOOL_DIR="${HOME}/ctf-tools"
 
-_prerequisite(){
-  sudo apt-get update 
+_prerequisite() {
+  sudo apt-get update
   sudo apt-get install -y git build-essential libssl-dev zlib1g-dev yasm pkg-config libgmp-dev libpcap-dev libbz2-dev
 }
 
-
-_install(){
+_install() {
   if [ ! -e ${TOOL_DIR}/john ]; then
-      git clone https://github.com/magnumripper/JohnTheRipper -b bleeding-jumbo ${TOOL_DIR}/john
+    git clone https://github.com/magnumripper/JohnTheRipper -b bleeding-jumbo ${TOOL_DIR}/john
   fi
 
   cd ${TOOL_DIR}/john/src
 
-  ./configure && make -s clean 
+  ./configure && make -s clean
   make -j$(nproc)
 
   sudo ln -sf ${TOOL_DIR}/john/run/john /usr/bin/john
   sudo ln -sf ${TOOL_DIR}/john/run/zip2john /usr/bin/zip2john
 }
 
-_postprocess(){
+_postprocess() {
   cd ${INIT_WORKDIR}
 }
+
+if [ ! $(command -v john) ]; then
+  _prerequisite
+  _install
+  _postprocess
+else
+  echo "John the ripper is already installed. Skipped."
+fi

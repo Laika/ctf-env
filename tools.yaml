@@ -1,129 +1,148 @@
-color: "52307c"
+---
+color: 52307c
 
 tools:
   burpsuite:
     name:
-      abbr: "burpsuite"
-      official: "Burp Suite"
-    version: "2021.5.2"
-    script: "burpsuite.sh"
+      abbr: burpsuite
+      official: Burp Suite
+    version: 2021.6.2
+    script: burpsuite.sh
   die:
     name:
-      abbr: "die"
-      official: "Detect It Easy"
-    version: "3.02"
-    script: "die.sh"
+      abbr: die
+      official: Detect It Easy
+    version: '3.02'
+    script: die.sh
   gdb:
     name:
-      abbr: "gdb"
-      official: "gdb suite"
-    version: "latest"
-    script: "gdb.sh"
+      abbr: gdb
+      official: gdb suite
+    version: latest
+    script: gdb.sh
   ghidra:
     name:
-      abbr: "ghidra"
-      official: "Ghidra"
-    version: "9.2.4"
-    script: "ghidra.sh"
+      abbr: ghidra
+      official: Ghidra
+    version: '10.0'
+    script: ghidra.sh
   gmpy2:
     name:
-      abbr: "gmpy2"
-      official: "gmpy2"
-    version: "latest"
-    script: "gmpy2.sh"
+      abbr: gmpy2
+      official: gmpy2
+    version: latest
+    script: gmpy2.sh
   goenv:
     name:
-      abbr: "goenv"
-      official: "goenv"
-    version: "1.16.4"
-    script: "goenv.sh"
+      abbr: goenv
+      official: goenv
+    version: 1.16.6
+    script: goenv.sh
   hashpump:
     name:
-      abbr: "hashpump"
-      official: "HashPump"
-    version: "latest"
-    script: "hashpump.sh"
+      abbr: hashpump
+      official: HashPump
+    version: latest
+    script: hashpump.sh
   john:
     name:
-      abbr: "john"
-      official: "John the Ripper"
-    version: "latest"
-    script: "john-the-ripper.sh"
+      abbr: john
+      official: John the Ripper
+    version: latest
+    script: john-the-ripper.sh
   msieve:
     name:
-      abbr: "msieve"
-      official: "Msieve"
-    version: "1.53"
-    script: "msieve.sh"
+      abbr: msieve
+      official: Msieve
+    version: '1.53'
+    script: msieve.sh
   nodenv:
     name:
-      abbr: "nodenv"
-      official: "nodenv"
-    version: "latest"
-    script: "nodenv.sh"
+      abbr: nodenv
+      official: nodenv
+    version: latest
+    script: nodenv.sh
   nodelatest:
     name:
-      abbr: "node-latest"
-      official: "Node.js latest"
-    version: "16.3.0"
-    script: "nodenv.sh"
+      abbr: node-latest
+      official: Node.js latest
+    version: 16.5.0
+    script: nodenv.sh
   nodestable:
     name:
-      abbr: "node-stable"
-      official: "Node.js stable"
-    version: "14.17.0"
-    script: "nodenv.sh"
+      abbr: node-stable
+      official: Node.js stable
+    version: 14.17.3
+    script: nodenv.sh
   pwntools:
     name:
-      abbr: "pwntools"
-      official: "Pwntools"
-    version: "latest"
-    script: "pwntools.sh"
+      abbr: pwntools
+      official: Pwntools
+    version: latest
+    script: pwntools.sh
   pyenv:
     name:
-      abbr: "pyenv"
-      official: "pyenv"
-    version: "latest"
-    script: "pyenv.sh"
+      abbr: pyenv
+      official: pyenv
+    version: latest
+    script: pyenv.sh
   python3:
     name:
-      abbr: "python3"
-      official: "Python3"
-    version: "3.9.5"
-    script: "pyenv.sh"
+      abbr: python3
+      official: Python3
+    version: 3.9.6
+    script: pyenv.sh
   python2:
     name:
-      abbr: "python2"
-      official: "Python2"
-    version: "2.7.18"
-    script: "pyenv.sh"
+      abbr: python2
+      official: Python2
+    version: 2.7.18
+    script: pyenv.sh
   radare2:
     name:
-      abbr: "radare2"
-      official: "radare2"
-    version: "latest"
-    script: "radare2.sh"
+      abbr: radare2
+      official: radare2
+    version: latest
+    script: radare2.sh
+  rbenv:
+    name:
+      abbr: rbenv
+      official: rbenv
+    version: latest
+    script: rbenv.sh
+  rubylatest:
+    name:
+      abbr: ruby-latest
+      official: Ruby latest
+    version: 3.0.2
+    script: rbenv.sh
+  rubystable:
+    name:
+      abbr: ruby-stable
+      official: Ruby stable
+    version: 2.7.4
+    script: rbenv.sh
   sagemath:
     name:
-      abbr: "sage"
-      official: "SageMath"
-    version: "9.3"
-    script: "sage.sh"
+      abbr: sage
+      official: SageMath
+    version: '9.3'
+    script: sage.sh
   stegsolve:
     name:
-      abbr: "stegsolve"
-      official: "Stegsolve"
-    version: "latest"
-    script: "stegsolve.sh"
+      abbr: stegsolve
+      official: Stegsolve
+    version: latest
+    script: stegsolve.sh
   volatility:
     name:
-      abbr: "volatility"
-      official: "Volatility"
-    version: "2.6"
-    script: "volatility.sh"
+      abbr: volatility
+      official: Volatility
+    version: '2.6'
+    script: volatility.sh
   wireshark:
-      name:
-        abbr: "wireshark"
-        official: "Wireshark"
-      version: "3.4.6"
-      script: "wireshark.sh"
+    name:
+      abbr: wireshark
+      official: Wireshark
+    version: 3.4.7
+    script: wireshark.sh
