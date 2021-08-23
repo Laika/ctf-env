@@ -14,8 +14,10 @@ Vagrant.configure("2") do |config|
     vb.cpus = 4
     vb.memory = 4096
   end
-  config.vm.provision "shell",
-    inline: 'sed -i.bak -e "s%http://[^ ]\+%https://linux.yz.yamagata-u.ac.jp/ubuntu/%g" /etc/apt/sources.list'
+  if ENV["APT_REPOSITORY_URL"] != nil then
+    config.vm.provision "shell",
+      inline: 'sed -i.bak -e "s%http://[^ ]\+%#{ENV["APT_REPOSITORY_URL"]}%g" /etc/apt/sources.list'
+  end
   config.vm.provision "shell", path: "scripts/pyenv.sh", privileged: false
   config.vm.provision "shell", path: "scripts/goenv.sh", privileged: false
   config.vm.provision "shell", path: "scripts/volatility.sh", privileged: false
@@ -27,5 +29,5 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", path: "scripts/gdb.sh", privileged: false
   config.vm.provision "shell", path: "scripts/hashpump.sh", privileged: false
   config.vm.provision "shell", path: "scripts/john-the-ripper.sh", privileged: false
-  
+
 end
