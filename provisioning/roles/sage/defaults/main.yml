@@ -1,0 +1,4 @@
+---
+# defaults file for sage
+
+tool_path: ~/ctf-tools
