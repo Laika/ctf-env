@@ -1,0 +1,16 @@
+- hosts: all
+  port: 2222
+  user: vagrant
+  roles:
+    #    - role: pyenv
+    #      pyenv_path: "~/pyenv"
+    #      pyenv_owner: "vagrant"
+    #      pyenv_global: 
+    #        - "3.9.6"
+    #        - "2.7.18"
+    #      pyenv_python_versions:
+    #        - "3.9.6"
+    #        - "2.7.18"
+    #      pyenv_users:
+    #        - vagrant
+    - role: radare2

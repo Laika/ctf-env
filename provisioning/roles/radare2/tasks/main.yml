@@ -1,0 +1,31 @@
+---
+# tasks file for radare2
+- name: Install prerequisites
+  become: yes
+  apt:
+    update_cache: true
+    install_recommends: false
+    pkg:
+      - build-essential
+      - ccache
+      - cmake
+      - bison
+      - flex
+      - pkg-config
+
+- name: Clone radare2
+  git:
+    repo: https://github.com/radareorg/radare2.git
+    dest: '{{ radare2_path }}'
+
+- name: Install radare2
+  command: 
+    chdir: '{{ radare2_path }}'
+    cmd: sys/install.sh
+
+- name: Initialize r2pm
+  shell: r2pm update
+
+- name: Install r2ghidra
+  shell: r2pm -ci r2ghidra
+
