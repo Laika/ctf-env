@@ -1,28 +1,6 @@
 ---
-pyenv_env: user
-pyenv_path: "{% if pyenv_env == 'user' %}{{ ansible_env.HOME }}/pyenv{% else %}/usr/local/pyenv{%  endif %}"
-pyenv_owner: '{{ ansible_env.USER }}'
-pyenv_seting_path: "{% if pyenv_env == 'user' %}~/.bashrc{% else %}/etc/profile.d/pyenv.sh{%  endif %}"
-pyenv_update_git_install: true
-pyenv_python_versions:
+pyenv_path: ~/.pyenv
+python_versions:
   - 3.9.6
   - 2.7.18
-pyenv_debain_packages:
-  - curl
-  - git
-  - llvm
-  - libbz2-dev
-  - libffi-dev
-  - liblzma-dev
-  - libncurses5-dev
-  - libncursesw5-dev
-  - libreadline-dev
-  - libsqlite3-dev
-  - libssl-dev
-  - python3-openssl
-  - tk-dev
-  - wget
-  - xz-utils
-  - zlib1g-dev
-pyenv_init_options: "{% if pyenv_env != 'user' %}--no-rehash{% endif %}"
-pyenv_python_configure_opts: "--enable-shared"
+python_configure_opts: --enable-shared

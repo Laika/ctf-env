@@ -1,6 +1,6 @@
 ---
 - name: Install prerequisites
-  become: yes
+  become: true
   apt:
     update_cache: true
     install_recommends: false
@@ -8,45 +8,59 @@
       - autoconf
       - bison
       - build-essential
+      - curl
+      - git
+      - libbz2-dev
       - libdb-dev
       - libffi-dev
       - libgdbm6
       - libgdbm-dev
+      - liblzma-dev
       - libncurses5-dev
+      - libncursesw5-dev
       - libreadline6-dev
+      - libreadline-dev
+      - libsqlite3-dev
       - libssl-dev
       - libyaml-dev
+      - llvm
+      - python3-openssl
+      - tk-dev
+      - wget
+      - xz-utils
       - zlib1g-dev
 
 - name: Clone pyenv
   git:
     repo: https://github.com/pyenv/pyenv.git
     dest: '{{ pyenv_path }}'
-    update: '{{ pyenv_update_git_install }}'
+    update: true
 
-- name: Write .pyenvrc for users
-  become: yes
-  become_user: '{{ item }}'
-  template:
-    src: .pyenvrc.j2
-    dest: '~{{ item }}/.pyenvrc'
-    backup: yes
-    mode: 'u=rw,go=r'
-  with_items: '{{ pyenv_users }}'
-
-- name: Add .pyenvrc to .bashrc
-  become: yes
-  become_user: '{{ item }}'
-  lineinfile:
-    path: ~/.bashrc
-    line: . ~/.pyenvrc
-  with_items: '{{ pyenv_users }}'
+- name: Add to .profile
+  ansible.builtin.blockinfile:
+    path: ~/.profile
+    insertafter: EOF
+    create: true
+    marker: '# {mark} ANSIBLE MANAGED BLOCK'
+    block: |
+      export PYENV_ROOT="${HOME}/.pyenv"
+      export PATH="${PYENV_ROOT}/bin:${PATH}"
+      eval "$(pyenv init --path)"
 
 - name: Install Python
-  shell: . ~/.pyenvrc && pyenv install {{ item | quote }}
+  ignore_errors: true
+  shell: >
+    . ~/.profile 
+    && echo | pyenv install {{ item | quote }}  
+    && pyenv rehash
   environment:
-    PYTHON_CONFIGURE_OPTS: '{{ pyenv_python_configure_opts }}'
-  with_items: '{{ pyenv_python_versions }}'
+    PYTHON_CONFIGURE_OPTS: '{{ python_configure_opts }}'
+  loop: '{{ python_versions }}'
+
+
 - name: Set pyenv global
-  shell: . ~/.pyenvrc && pyenv global {{ pyenv_global }} && pyenv rehash
-  when: pyenv_global is defined
+  ignore_errors: true
+  shell: >
+    . ~/.profile  
+    && echo | pyenv global {{ python_versions | join(' ') }}  
+    && pyenv rehash
