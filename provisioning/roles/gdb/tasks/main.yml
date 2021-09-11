@@ -1,0 +1,88 @@
+---
+# tasks file for gdb
+- name: Install prerequisites
+  become: true
+  apt:
+    update_cache: true
+    install_recommends: false
+    pkg:
+      - git
+      - gdb
+
+- name: Install python packages
+  ignore_errors: true
+  shell: |
+    . ~/.profile
+    python2 -m pip install -U pip
+    python2 -m pip install psutil keystone-engine unicorn capstone ropper
+    pyenv rehash
+
+
+- name: Change /opt permission
+  become: true
+  ansible.builtin.file:
+    path: /opt
+    state: directory
+    recurse: true
+    owner: vagrant
+    group: vagrant
+
+- name: Download gdb-peda
+  git:
+    repo: https://github.com/longld/peda
+    dest: '{{ peda_path }}'
+    update: true
+
+
+- name: Create directory for gef
+  ansible.builtin.file:
+    path: '{{ gef_path }}'
+    state: directory
+    mode: 0755
+
+- name: Download gef
+  get_url:
+    url: http://gef.blah.cat/py
+    dest: '{{ gef_path }}/.gdbinit-gef.py'
+
+
+- name: Download pwndbg
+  git:
+    repo: https://github.com/pwndbg/pwndbg
+    dest: '{{ pwndbg_path }}'
+    update: true
+
+- name: Download pwngdb
+  git:
+    repo: https://github.com/scwuaptx/Pwngdb
+    dest: '{{ pwngdb_path }}'
+    update: true
+
+
+- name: Copy .gdbinit
+  ansible.builtin.template:
+    src: ./templates/gdbinit.j2
+    dest: '{{ ansible_env.HOME }}/.gdbinit'
+
+- name: Install peda
+  become: true
+  copy:
+    src: ./files/peda
+    dest: /usr/local/bin/peda
+    mode: 0755
+
+- name: Install dbg
+  become: true
+  copy:
+    src: ./files/dbg
+    dest: /usr/local/bin/dbg
+    mode: 0755
+
+- name: Install gef
+  become: true
+  copy:
+    src: ./files/gef
+    dest: /usr/local/bin/gef
+    mode: 0755
+
+

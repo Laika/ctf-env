@@ -1,0 +1,6 @@
+---
+# defaults file for gdb
+gef_path: '/opt/gef'
+peda_path: '/opt/peda'
+pwndbg_path: '/opt/pwndbg'
+pwngdb_path: '/opt/pwngdb'

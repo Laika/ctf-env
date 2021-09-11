@@ -10,24 +10,14 @@ Vagrant.configure("2") do |config|
   config.ssh.forward_agent = true
   config.ssh.forward_x11 = true
 
+  config.vm.synced_folder ".", "/vagrant", disabled: true
+
   config.vm.provider "virtualbox" do |vb|
     vb.cpus = 4
     vb.memory = 4096
   end
-  if ENV["APT_REPOSITORY_URL"] != nil then
-    config.vm.provision "shell",
-      inline: 'sed -i.bak -e "s%http://[^ ]\+%#{ENV["APT_REPOSITORY_URL"]}%g" /etc/apt/sources.list'
+  config.vm.provision :ansible do |ansible|
+    ansible.playbook = "provisioning/playbook.yaml"
   end
-  config.vm.provision "shell", path: "scripts/pyenv.sh", privileged: false
-  config.vm.provision "shell", path: "scripts/goenv.sh", privileged: false
-  config.vm.provision "shell", path: "scripts/volatility.sh", privileged: false
-  config.vm.provision "shell", path: "scripts/ghidra.sh", privileged: false
-  config.vm.provision "shell", path: "scripts/gmpy2.sh", privileged: false
-  config.vm.provision "shell", path: "scripts/wireshark.sh", privileged: false
-  config.vm.provision "shell", path: "scripts/sage.sh", privileged: false
-  config.vm.provision "shell", path: "scripts/radare2.sh", privileged: false
-  config.vm.provision "shell", path: "scripts/gdb.sh", privileged: false
-  config.vm.provision "shell", path: "scripts/hashpump.sh", privileged: false
-  config.vm.provision "shell", path: "scripts/john-the-ripper.sh", privileged: false
 
 end
