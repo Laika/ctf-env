@@ -9,3 +9,4 @@
     - role: radare2
     - role: gdb
     - role: sage
+      sage_version: 9.3
