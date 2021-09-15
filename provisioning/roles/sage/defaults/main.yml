@@ -1,0 +1,5 @@
+---
+# defaults file for sage
+
+sage_path: ~/ctf-tools/sagemath
+sage_version: 9.3

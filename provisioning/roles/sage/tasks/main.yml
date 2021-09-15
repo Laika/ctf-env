@@ -1,0 +1,39 @@
+---
+# tasks file for sage
+
+- name: Set some local variables
+  set_fact:
+    archive_path: '/tmp/sage-{{ sage_version }}-Ubuntu_20.04-x86_64.tar.bz2'
+
+- name: make sage directory
+  ansible.builtin.file: 
+    path: '{{ sage_path }}'
+    state: directory
+- name: Download sage
+  get_url:
+    url: 'http://ftp.yz.yamagata-u.ac.jp/pub/math/sage/linux/64bit/sage-{{ sage_version }}-Ubuntu_20.04-x86_64.tar.bz2'
+    dest: '{{ archive_path }}'
+
+
+- name: Unarchive sage
+  ansible.builtin.unarchive:
+    src: '{{ archive_path }}'
+    dest: '{{ sage_path }}'
+    remote_src: yes
+
+# - name: Remove archive
+#  ansible.builtin.file:
+#    path: '{{ archive_path }}'
+#    state: absent
+
+- name: Move sage
+  ansible.builtin.file:
+    src: '{{ sage_path }}/SageMath'
+    dest: '{{ sage_path }}'
+
+
+- name: Create symbolic link
+  ansible.builtin.file:
+    src: '{{ sage_path }}/sage'
+    dest: /usr/bin/sage
+    state: link

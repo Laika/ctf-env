@@ -1,0 +1,12 @@
+- hosts: all
+  port: 2222
+  user: vagrant
+  roles:
+    - role: pyenv
+      pyenv_global: 
+        - "3.9.7"
+        - "2.7.18"
+    - role: radare2
+    - role: gdb
+    - role: sage
+      sage_version: 9.3
