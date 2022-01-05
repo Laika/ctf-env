@@ -18,14 +18,27 @@
     repo: https://github.com/radareorg/radare2.git
     dest: '{{ radare2_path }}'
 
+- name: Install r2env
+  shell: |
+    . ~/.profile
+    python -m pip install -U r2env
+    pyenv rehash
+
+- name: Add to .profile
+  ansible.builtin.blockinfile:
+    path: ~/.profile
+    insertafter: EOF
+    create: true
+    marker: '# {mark} ANSIBLE MANAGED BLOCK [r2env]'
+    block: |
+      export R2ENV_PATH="${HOME}/.r2env"
+      export PATH="${R2ENV_PATH}/bin:${PATH}"
+
 - name: Install radare2
-  command: 
-    chdir: '{{ radare2_path }}'
-    cmd: sys/install.sh
+  shell: |
+    . ~/.profile
+    r2env init
+    r2env add radare2@git
+    r2env add r2ghidra@git
 
-- name: Initialize r2pm
-  shell: r2pm update
-
-- name: Install r2ghidra
-  shell: r2pm -ci r2ghidra
 

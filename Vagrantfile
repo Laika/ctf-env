@@ -13,7 +13,7 @@ Vagrant.configure("2") do |config|
   config.vm.synced_folder ".", "/vagrant", disabled: true
 
   config.vm.provider "virtualbox" do |vb|
-    vb.cpus = 4
+    vb.cpus = 2
     vb.memory = 4096
   end
   config.vm.provision :ansible do |ansible|
