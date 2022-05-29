@@ -1,0 +1,70 @@
+---
+# tasks file for sage
+
+
+- name: Check SageMath is installed
+  ansible.builtin.shell: sage --version
+  ignore_errors: true
+  register: sage_install_check
+
+- name: Finish if SageMath is installed
+  ansible.builtin.meta: end_play
+  when: sage_install_check.rc == 0
+
+- name: Set some local variables
+  set_fact:
+    archive_path: '/tmp/sage-{{ sage.version }}.tar.gz'
+
+- name: Install prerequisites
+  ansible.builtin.apt:
+    update_cache: true
+    install_recommends: false
+    pkg:
+      - bc
+      - build-essential
+      - git
+      - m4
+      - perl
+      - ranlib
+      - tar
+
+- name: Make SageMath directory
+  ansible.builtin.file:
+    path: '{{ sage.path }}'
+    state: directory
+
+
+- name: Check if source code exists
+  ansible.builtin.shell: find /tmp -name "sage-{{ sage.version }}.tar.gz"
+  ignore_errors: true
+  register: sage_source_check
+
+- name: debug
+  debug:
+    msg: "{{ sage_source_check }}"
+
+- name: Download SageMath's source code
+  get_url:
+    url: 'https://ftp.riken.jp/sagemath/src/sage-{{ sage.version }}.tar.gz'
+    dest: '{{ archive_path }}'
+  when: sage_source_check.stdout == ""
+
+- name: Unarchive the source code
+  ansible.builtin.unarchive:
+    src: '{{ archive_path }}'
+    dest: '{{ sage.path }}'
+    remote_src: yes
+
+
+- name: Build sage
+  # https://doc.sagemath.org/html/en/installation/source.html#linux-recommended-installation
+  # https://doc.sagemath.org/html/en/installation/source.html#section-make
+  ansible.builtin.shell: |
+    ./configure
+    MAKE='make -j4 -l5.5' SAGE_INSTALL_CCACHE=yes make build
+
+- name: Create symbolic link to SageMath binary
+  ansible.builtin.file:
+    src: '{{ sage.path }}/sage'
+    dest: /usr/bin/sage
+    state: link

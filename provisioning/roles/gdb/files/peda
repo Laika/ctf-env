@@ -1,2 +1,0 @@
-#!/bin/bash
-exec gdb -q -ex init-peda "$@"

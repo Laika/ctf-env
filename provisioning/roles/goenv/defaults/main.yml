@@ -1,6 +1,0 @@
----
-# defaults file for goenv
-#
-goenv_path: ~/.goenv
-go_versions:
-  - 1.17.0

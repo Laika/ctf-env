@@ -1,4 +1,0 @@
----
-# defaults file for radare2
-
-radare2_path: '{{ ansible_env.HOME }}/ctf-tools/radare2'

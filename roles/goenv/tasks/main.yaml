@@ -1,0 +1,39 @@
+---
+- name: Check installed Go versions
+  shell: . ~/.profile && goenv versions --bare
+  register: goenv_installed_versions
+
+- name: Clone goenv
+  git:
+    repo: https://github.com/syndbg/goenv.git
+    dest: '{{ goenv.path }}'
+    update: true
+
+- name: Add to .profile
+  ansible.builtin.blockinfile:
+    path: ~/.profile
+    insertafter: EOF
+    create: true
+    marker: '# {mark} ANSIBLE MANAGED BLOCK'
+    block: |
+      export GOENV_ROOT="${HOME}/.goenv"
+      export PATH="${GOENV_ROOT}/bin:${PATH}"
+      eval "$(goenv init -)"
+      export PATH="${GOROOT}/bin:${PATH}"
+      export PATH="${PATH}:${GOPATH}/bin"
+
+- name: Install Go
+  ignore_errors: true
+  shell: >
+    . ~/.profile
+    && echo | goenv install {{ item | quote }}
+    && goenv rehash
+  when: item not in goenv_installed_versions.stdout_lines
+  loop: '{{ goenv.versions }}'
+
+- name: Set goenv global
+  ignore_errors: true
+  shell: >
+    . ~/.profile
+    && yes n | goenv global {{ goenv.versions | join(' ') }}
+    && goenv rehash

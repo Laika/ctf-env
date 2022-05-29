@@ -1,0 +1,38 @@
+---
+- hosts: ctf
+  user: ctf
+  roles:
+   # - role: base
+   # - role: pyenv
+   # - role: goenv
+   # - role: radare2
+   # - role: gdb
+    - role: sage
+  vars:
+    - base:
+        apt_repository: http://ftp.jaist.ac.jp/pub/Linux/ubuntu
+    - pyenv:
+        path: '{{ ansible_env.HOME }}/.pyenv'
+        versions:
+          - 3.10.4
+          - 2.7.18
+        configure_opts: '--enable-shared'
+
+    - radare2:
+        path: '{{ ansible_env.HOME }}/ctf-tools/radare2'
+
+
+    - goenv:
+        path: '{{ ansible_env.HOME }}/.goenv'
+        versions:
+          - 1.18.2
+
+    - sage:
+        path: '{{ ansible_env.HOME }}/ctf-tools/sagemath'
+        version: 9.6
+
+    - gdb:
+        gef_path: '/opt/gef'
+        peda_path: '/opt/peda'
+        pwndbg_path: '/opt/pwndbg'
+        pwngdb_path: '/opt/pwngdb'

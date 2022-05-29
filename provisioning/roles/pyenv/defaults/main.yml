@@ -1,6 +1,0 @@
----
-pyenv_path: ~/.pyenv
-python_versions:
-  - 3.9.6
-  - 2.7.18
-python_configure_opts: --enable-shared
