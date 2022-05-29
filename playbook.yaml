@@ -7,7 +7,7 @@
    # - role: goenv
    # - role: radare2
    # - role: gdb
-    - role: sage
+    - role: sagemath
   vars:
     - base:
         apt_repository: http://ftp.jaist.ac.jp/pub/Linux/ubuntu
@@ -27,7 +27,7 @@
         versions:
           - 1.18.2
 
-    - sage:
+    - sagemath:
         path: '{{ ansible_env.HOME }}/ctf-tools/sagemath'
         version: 9.6
 
