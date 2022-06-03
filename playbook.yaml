@@ -32,7 +32,6 @@
         version: 9.6
 
     - gdb:
-        gef_path: '/opt/gef'
-        peda_path: '/opt/peda'
-        pwndbg_path: '/opt/pwndbg'
-        pwngdb_path: '/opt/pwngdb'
+        path: '{{ ansible_env.HOME }}/ctf-tools/pwndbg'
+    - patchelf:
+        path: '{{ ansible_env.HOME }}/ctf-tools/patchelf'

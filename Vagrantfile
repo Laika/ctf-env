@@ -12,8 +12,8 @@ Vagrant.configure('2') do |config|
   # Specification
   config.disksize.size = '80GB'
   config.vm.provider 'virtualbox' do |vb|
-    vb.cpus = 2
-    vb.memory = 4096
+    vb.cpus = 4
+    vb.memory = 8192
   end
 
   # SSH
