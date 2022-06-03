@@ -1,0 +1,20 @@
+---
+# https://github.com/pwndbg/pwndbg
+- name: Install gdb
+  become: true
+  ansible.builtin.apt:
+    update_cache: true
+    install_recommends: false
+    pkg:
+      - gdb
+
+- name: Clone pwndbg from GitHub
+  ansible.builtin.git:
+    repo: https://github.com/pwndbg/pwndbg
+    dest: '{{ pwndbg.path }}'
+    update: yes
+
+- name: Install pwndbg
+  ansible.builtin.shell: |
+    cd {{ pwndbg.path }}
+    ./setup.sh
