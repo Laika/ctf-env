@@ -1,6 +1,6 @@
 # ctf-env
   
-A suite of installation shell scripts to create an environment for CTF.
+A virtual environment for CTF with a suite of useful tools.
 
 ## Prerequisites
 - [Vagrant](https://www.vagrantup.com/downloads)
