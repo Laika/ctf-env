@@ -57,7 +57,6 @@ vagrant ssh
 - [pwndbg](https://github.com/pwndbg/pwndbg)
 - [patchelf](https://github.com/NixOS/patchelf)
 - [SageMath 9.6](https://www.sagemath.org/)
-## To be done
 - [radare2](https://github.com/radareorg/radare2)
   - [r2ghidra](https://github.com/radareorg/r2ghidra)
 
