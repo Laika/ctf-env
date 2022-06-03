@@ -7,7 +7,7 @@ A suite of installation shell scripts to create an environment for CTF.
 - [VirtualBox](https://www.virtualbox.org/wiki/Downloads)
 
 
-## Run
+## Usage
 1. Choose tools you need in `playbook.yaml`  
 
 Example 1. Only SageMath
@@ -38,7 +38,8 @@ Example 2. Everything
 2. Run below commands
 ```
 git clone https://github.com/Laika/ctf-env && cd ctf-env/
-make up
+vagrant plugin install vagrant-disksize
+vagrant up
 ```
 
 3. Go into the virtual machine
