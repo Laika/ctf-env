@@ -1,0 +1,30 @@
+---
+# https://github.com/NixOS/patchelf
+- name: Install prerequisites
+  become: true
+  ansible.builtin.apt:
+    update_cache: true
+    install_recommends: false
+    pkg:
+      - autoconf
+      - automake
+
+- name: Clone patchelf from GitHub
+  ansible.builtin.git:
+    repo: https://github.com/NixOS/patchelf.git
+    dest: '{{ patchelf.path }}'
+    update: yes
+
+- name: Build patchelf
+  ansible.builtin.shell: |
+    cd {{ patchelf.path }}
+    ./bootstrap.sh
+    ./configure
+    make
+    make check
+
+- name: Install patchelf
+  become: true
+  ansible.builtin.shell: |
+    cd {{ patchelf.path }}
+    make install
