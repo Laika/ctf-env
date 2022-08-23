@@ -4,8 +4,8 @@
   roles:
     - role: base
     - role: pyenv
-   # - role: goenv
-   # - role: radare2
+    - role: goenv
+    - role: radare2
    # - role: gdb
    # - role: sagemath
   vars:
@@ -17,6 +17,10 @@
           - 3.10.4
           - 2.7.18
         configure_opts: '--enable-shared'
+        packages:
+          - pwntools
+          - toyotama
+          - pycryptodome
 
     - radare2:
         path: '{{ ansible_env.HOME }}/ctf-tools/radare2'

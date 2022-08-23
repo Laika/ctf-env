@@ -2,6 +2,7 @@
 
 - name: Check installed Python versions
   shell: . ~/.profile && pyenv versions --bare
+  ignore_errors: true
   register: pyenv_installed_versions
 
 
@@ -70,4 +71,10 @@
   shell: >
     . ~/.profile
     && echo | pyenv global {{ pyenv.versions | join(' ') }}
+    && pyenv rehash
+
+- name: Install packages
+  shell: >
+    . ~/.profile
+    && python -m pip install -U pip {{ pyenv.packages | join(' ') }}
     && pyenv rehash

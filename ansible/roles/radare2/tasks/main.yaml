@@ -41,7 +41,7 @@
       export PATH="${R2ENV_PATH}/bin:${PATH}"
 
 - name: Install radare2
-  ansible.builtin.shell:
+  shell: | 
     . ~/.profile
     r2env init
     r2env add radare2@git
