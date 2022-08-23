@@ -1,13 +1,13 @@
 ---
-- hosts: ctf
+- hosts: all
   user: ctf
   roles:
-   # - role: base
-   # - role: pyenv
+    - role: base
+    - role: pyenv
    # - role: goenv
    # - role: radare2
    # - role: gdb
-    - role: sagemath
+   # - role: sagemath
   vars:
     - base:
         apt_repository: http://ftp.jaist.ac.jp/pub/Linux/ubuntu
