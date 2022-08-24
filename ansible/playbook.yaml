@@ -1,4 +1,3 @@
----
 - hosts: all
   user: ctf
   roles:
@@ -6,8 +5,9 @@
     - role: pyenv
     - role: goenv
     - role: radare2
-   # - role: gdb
-   # - role: sagemath
+  # - role: gdb
+  # - role: sagemath
+
   vars:
     - base:
         apt_repository: http://ftp.jaist.ac.jp/pub/Linux/ubuntu
@@ -21,20 +21,15 @@
           - pwntools
           - toyotama
           - pycryptodome
-
     - radare2:
         path: '{{ ansible_env.HOME }}/ctf-tools/radare2'
-
-
     - goenv:
         path: '{{ ansible_env.HOME }}/.goenv'
         versions:
           - 1.18.2
-
     - sagemath:
         path: '{{ ansible_env.HOME }}/ctf-tools/sagemath'
         version: 9.6
-
     - gdb:
         path: '{{ ansible_env.HOME }}/ctf-tools/pwndbg'
     - patchelf:
