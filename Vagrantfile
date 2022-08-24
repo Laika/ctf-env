@@ -1,6 +1,6 @@
 Vagrant.configure('2') do |config|
   # Base
-  config.vm.box = 'ubuntu/focal64'
+  config.vm.box = 'ubuntu/jammy64'
   config.vm.box_check_update = true
   config.vm.hostname = 'ctf'
 
@@ -22,11 +22,5 @@ Vagrant.configure('2') do |config|
   config.ssh.forward_agent = true
   config.ssh.forward_x11 = true
 
-  # Provisioning
-  # config.vm.provision :ansible_local do |ansible|
-  #  ansible.limit = 'all'
-  #  ansible.playbook = '/home/vagrant/ansible/playbook.yaml'
-  #  ansible.inventory_path = '/home/vagrant/ansible/hosts'
-  #end
 end
 # vim: set ft=ruby :
