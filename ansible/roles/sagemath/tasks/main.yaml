@@ -6,58 +6,13 @@
 - name: Finish if SageMath is installed
   ansible.builtin.meta: end_play
   when: sage_install_check.rc == 0
-- name: Set some local variables
-  set_fact:
-    archive_path: '/tmp/sage-{{ sagemath.version }}.tar.gz'
-- name: Install prerequisites
+- name: Install SageMath
   become: true
   ansible.builtin.apt:
     update_cache: true
+    upgrade: true
     install_recommends: false
-    pkg:
-      - bc
-      - build-essential
-      - git
-      - m4
-      - perl
-      - tar
-- name: Make SageMath directory
-  ansible.builtin.file:
-    path: '{{ sagemath.path }}'
-    state: directory
-- name: Check if source code exists
-  ansible.builtin.shell: find /tmp -name "sage-{{ sagemath.version }}.tar.gz"
-  ignore_errors: true
-  register: sage_source_archive_check
-- name: Download SageMath's source code
-  get_url:
-    url: 'https://ftp.riken.jp/sagemath/src/sage-{{ sagemath.version }}.tar.gz'
-    dest: '{{ archive_path }}'
-  when: sage_source_archive_check.stdout == ""
-- name: Check if source code exists
-  ansible.builtin.shell: find {{ ansible_env.HOME }}/ctf-tools -type d -name "sage-{{ sagemath.version }}"
-  ignore_errors: true
-  register: sage_source_check
-- name: debug
-  debug:
-    msg: "{{ sage_source_check }}"
-- name: Unarchive the source code
-  ansible.builtin.unarchive:
-    src: '{{ archive_path }}'
-    dest: '{{ sagemath.path }}'
-    remote_src: yes
-  when: sage_source_archive_check.stdout == ""
-- name: Build SageMath
-  # https://doc.sagemath.org/html/en/installation/source.html#linux-recommended-installation
-
-  # https://doc.sagemath.org/html/en/installation/source.html#section-make
-  ansible.builtin.shell: |
-    cd '{{ sagemath.path }}/sage-{{ sagemath.version }}'
-    ./configure
-    MAKE='make -j4' SAGE_INSTALL_CCACHE=yes make build
-- name: Create symbolic link to SageMath binary
-  become: true
-  ansible.builtin.file:
-    src: '{{ sagemath.path }}/sage-{{ sagemath.version }}/sage'
-    dest: /usr/bin/sage
-    state: link
+    autoclean: true
+    autoremove: true
+    name:
+      - sagemath
