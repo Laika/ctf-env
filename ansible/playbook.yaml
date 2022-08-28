@@ -5,7 +5,7 @@
     - role: pyenv
     - role: goenv
     - role: radare2
-  # - role: gdb
+    - role: gdb
   # - role: sagemath
 
   vars:
@@ -31,6 +31,7 @@
         path: '{{ ansible_env.HOME }}/ctf-tools/sagemath'
         version: 9.6
     - gdb:
-        path: '{{ ansible_env.HOME }}/ctf-tools/pwndbg'
+        pwndbg:
+          path: '{{ ansible_env.HOME }}/ctf-tools/pwndbg'
     - patchelf:
         path: '{{ ansible_env.HOME }}/ctf-tools/patchelf'
