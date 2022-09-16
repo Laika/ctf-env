@@ -9,4 +9,10 @@
   ansible.builtin.apt:
     update_cache: true
     upgrade: true
+- name: apt install
+  become: true
+  ansible.builtin.apt:
+    update_cache: true
     install_recommends: false
+    name: '{{ base.name }}'
+

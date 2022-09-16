@@ -1,16 +1,21 @@
 - hosts: all
   user: ctf
   roles:
-    - role: base
-    - role: pyenv
-    - role: goenv
-    - role: radare2
-    - role: gdb
+  #   - role: base
+  #   - role: pyenv
+  #   - role: goenv
+  #   - role: radare2
+  #   - role: gdb
+  #  - role: rust
+    - rbenv
+      #  - role: patchelf
   # - role: sagemath
 
   vars:
     - base:
         apt_repository: http://ftp.jaist.ac.jp/pub/Linux/ubuntu
+        name:
+          - zoxide
     - pyenv:
         path: '{{ ansible_env.HOME }}/.pyenv'
         versions:
@@ -21,8 +26,13 @@
           - pwntools
           - toyotama
           - pycryptodome
+    - rbenv:
+        path: '{{ ansible_env.HOME }}/.rbenv'
+        versions:
+          - 3.1.2
     - radare2:
         path: '{{ ansible_env.HOME }}/ctf-tools/radare2'
+        
     - goenv:
         path: '{{ ansible_env.HOME }}/.goenv'
         versions:
@@ -33,5 +43,9 @@
     - gdb:
         pwndbg:
           path: '{{ ansible_env.HOME }}/ctf-tools/pwndbg'
+    - rust:
+        packages:
+          - vivid
+          - zoxide
     - patchelf:
         path: '{{ ansible_env.HOME }}/ctf-tools/patchelf'
