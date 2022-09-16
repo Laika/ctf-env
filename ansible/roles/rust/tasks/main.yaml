@@ -1,0 +1,20 @@
+# tasks file for rust
+- name: Check Rust is installed
+  ansible.builtin.shell: rustup --version
+  ignore_errors: true
+  register: rust_install_check
+- name: Fetch rustup
+  ansible.builtin.uri: 
+    url: https://sh.rustup.rs
+    return_content: yes
+  register: rustup_installation_script
+  when: rust_install_check.rc != 0
+- name: Run rustup installation script
+  ansible.builtin.shell:
+    cmd: sh -s -- -y
+    stdin: "{{ rustup_installation_script.content }}"
+  when: rust_install_check.rc != 0
+
+- name: Add cargo packages
+  ansible.builtin.shell:
+    cmd: "cargo install {{ rust.packages | join(' ') }}"
