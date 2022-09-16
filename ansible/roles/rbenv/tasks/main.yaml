@@ -1,0 +1,35 @@
+- name: Check installed Ruby versions
+  shell: . ~/.profile && rbenv versions --bare
+  ignore_errors: true
+  register: rbenv_installed_versions
+- name: Clone rbenv
+  ansible.builtin.git:
+    repo: https://github.com/rbenv/rbenv.git
+    dest: '{{ rbenv.path }}'
+    update: true
+- name: Clone ruby-build
+  ansible.builtin.git:
+    repo: https://github.com/rbenv/ruby-build.git
+    dest: '{{ rbenv.path }}/plugins/ruby-build'
+    update: true
+- name: Add to .profile
+  ansible.builtin.blockinfile:
+    path: ~/.profile
+    insertafter: EOF
+    create: true
+    marker: '# {mark} ANSIBLE MANAGED BLOCK [rbenv]'
+    block: |
+      export RBENV_ROOT="${HOME}/.rbenv"
+      export PATH="${RBENV_ROOT}/bin:${PATH}"
+      eval "$({{ rbenv.path }}/bin/rbenv init - bash)"
+- name: Install Ruby
+  ignore_errors: true
+  shell: >
+    . ~/.profile && {{ rbenv.path }}/bin/rbenv install {{ item | quote }} && rbenv rehash
+  when: item not in rbenv_installed_versions.stdout_lines
+  loop: '{{ rbenv.versions }}'
+- name: Set rbenv global
+  ignore_errors: true
+  shell: >
+    . ~/.profile && {{ rbenv.path }}/bin/rbenv global {{ rbenv.versions | join(' ') }} && rbenv rehash
+
