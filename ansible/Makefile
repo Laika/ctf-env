@@ -8,6 +8,7 @@ plugin-install:
 
 install:
 	ANSIBLE_NOCOWS=1 ansible-playbook -i hosts playbook.yaml
+	@echo "[+] Installation finished. Restart your shell."
 
 ansible:
 	sudo apt-add-repository -y -u ppa:ansible/ansible && sudo apt install -y ansible
