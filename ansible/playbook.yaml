@@ -16,6 +16,8 @@
         apt_repository: http://ftp.jaist.ac.jp/pub/Linux/ubuntu
         name:
           - zoxide
+    - burp:
+        version: 2023.2.3
     - pyenv:
         path: '{{ ansible_env.HOME }}/.pyenv'
         versions:

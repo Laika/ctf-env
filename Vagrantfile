@@ -10,6 +10,8 @@ Vagrant.configure('2') do |config|
   # File system
   config.vm.synced_folder './ansible', '/home/vagrant/ansible',
     create: true, owner: 'vagrant', group: 'vagrant'
+  config.vm.synced_folder './share', '/share',
+    create: true, owner: 'vagrant', group: 'vagrant'
 
   # Specification
   config.disksize.size = '80GB'
