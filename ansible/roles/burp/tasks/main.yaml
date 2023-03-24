@@ -1,0 +1,56 @@
+- name: Check if Burp Suite is installed
+  shell: burp --version
+  ignore_errors: true
+  register: burpsuite_install_check
+
+
+- name: Create a temporal directory
+  ansible.builtin.tempfile:
+    state: directory
+    suffix: temp
+  register: temp_burp
+  when: burpsuite_install_check.rc != 0
+
+- name: Update a varfile
+  ansible.builtin.blockinfile:
+    path: '{{ temp_burp.path }}/response.varfile'
+    insertafter: EOF
+    create: true
+    marker: '# {mark} ANSIBLE MANAGED BLOCK [reponse.varfile]'
+    block: |
+      beuser=burpsuite
+      beuserandgroup=burpsuite\:burpsuite
+      dataDirectory=/var/lib/BurpSuiteCommunityEdition
+      databaseBackupsDirectory=/var/lib/BurpSuiteCommunityEdition
+      dbType=h2
+      escapedDataDir=/var/lib/BurpSuiteCommunityEdition
+      escapedInstallationDir=/opt/burpsuite_community
+      jreHome=/opt/burpsuite_community/jre
+      logsDirectory=/var/log/BurpSuiteCommunityEdition
+      platformScriptSuffix=sh
+      sys.adminRights$Boolean=true
+      sys.component.agent$Boolean=true
+      sys.component.db$Boolean=true
+      sys.component.enterprise$Boolean=false
+      sys.component.web$Boolean=true
+      sys.installationDir={{ burp.path }}
+      sys.languageId=en
+      sys.programGroupDisabled$Boolean=true
+      webserver_port$Integer=8080
+- name: Download Burp Suite installation script
+  ansible.builtin.get_url:
+    url: "https://portswigger-cdn.net/burp/releases/download?product=community&version={{ burp.version }}&type=Linux"
+    dest: "{{ temp_burp.path }}/burpsuite_community_linux_v2023_2_3.sh"
+  when: burpsuite_install_check.rc != 0
+
+- name: Run Burp Suite installation script
+  ansible.builtin.shell:
+    cmd: "bash {{ temp_burp.path }}/burpsuite_community_linux_v{{ burp.version | replace('.', '_') }}.sh -q -varfile {{ temp_burp.path }}/response.varfile"
+
+- name: Create a symbolic link
+  become: yes
+  ansible.builtin.file:
+    src: '{{ burp.path }}/BurpSuiteCommunity'
+    dest: /usr/bin/burp
+    owner: '{{ ansible_env.USER }}'
+    state: link

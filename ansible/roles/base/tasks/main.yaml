@@ -15,4 +15,14 @@
     update_cache: true
     install_recommends: false
     name: '{{ base.name }}'
-
+- name: Add setignorecase to ~/.inputrc
+  ansible.builtin.blockinfile:
+    path: ~/.inputrc
+    insertafter: EOF
+    create: true
+    marker: '# {mark} ANSIBLE MANAGED BLOCK [inputrc]'
+    block: |
+      set completion-ignore-case on
+      set colored-stats on
+      set colored-completion-prefix on
+      set visible-stats on

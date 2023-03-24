@@ -1,23 +1,25 @@
 - hosts: all
   user: ctf
   roles:
-      - role: base
-      - role: pyenv
-      - role: goenv
-      - role: radare2
-      - role: gdb
-      - role: rust
-      - role: rbenv
-      - role: patchelf
-      - role: sagemath
+    - role: base
+    - role: burp
+      #- role: pyenv
+      #- role: goenv
+      #- role: radare2
+      #- role: gdb
+      #- role: rust
+      #- role: rbenv
+      #- role: patchelf
+      #- role: sagemath
 
   vars:
     - base:
         apt_repository: http://ftp.jaist.ac.jp/pub/Linux/ubuntu
         name:
-          - zoxide
+          - default-jre
     - burp:
         version: 2023.2.3
+        path: '{{ ansible_env.HOME }}/ctf-tools/burpsuite_community'
     - pyenv:
         path: '{{ ansible_env.HOME }}/.pyenv'
         versions:
