@@ -1,13 +1,13 @@
 - hosts: all
   user: ctf
   roles:
-      #- role: base
-      #- role: pyenv
-      #- role: goenv
-      #- role: radare2
-      #- role: gdb
-      #- role: rust
-      #- role: rbenv
+      - role: base
+      - role: pyenv
+      - role: goenv
+      - role: radare2
+      - role: gdb
+      - role: rust
+      - role: rbenv
       - role: patchelf
       - role: sagemath
 
