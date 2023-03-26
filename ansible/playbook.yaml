@@ -17,6 +17,7 @@
         apt_repository: http://ftp.jaist.ac.jp/pub/Linux/ubuntu
         name:
           - default-jre
+          - wireshark
     - burp:
         version: 2023.2.3
         path: '{{ ansible_env.HOME }}/ctf-tools/burpsuite_community'
@@ -30,6 +31,7 @@
           - pwntools
           - pycryptodome
           - toyotama
+          - z3-solver
     - rbenv:
         path: '{{ ansible_env.HOME }}/.rbenv'
         versions:

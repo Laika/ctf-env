@@ -13,10 +13,10 @@
 
 - name: Update a varfile
   ansible.builtin.blockinfile:
-    path: '{{ temp_burp.path }}/response.varfile'
+    path: "{{ temp_burp.path }}/response.varfile"
     insertafter: EOF
     create: true
-    marker: '# {mark} ANSIBLE MANAGED BLOCK [reponse.varfile]'
+    marker: '# {mark} ANSIBLE MANAGED BLOCK [response.varfile]'
     block: |
       beuser=burpsuite
       beuserandgroup=burpsuite\:burpsuite
@@ -37,6 +37,8 @@
       sys.languageId=en
       sys.programGroupDisabled$Boolean=true
       webserver_port$Integer=8080
+  when: burpsuite_install_check.rc != 0
+
 - name: Download Burp Suite installation script
   ansible.builtin.get_url:
     url: "https://portswigger-cdn.net/burp/releases/download?product=community&version={{ burp.version }}&type=Linux"
@@ -46,6 +48,7 @@
 - name: Run Burp Suite installation script
   ansible.builtin.shell:
     cmd: "bash {{ temp_burp.path }}/burpsuite_community_linux_v{{ burp.version | replace('.', '_') }}.sh -q -varfile {{ temp_burp.path }}/response.varfile"
+  when: burpsuite_install_check.rc != 0
 
 - name: Create a symbolic link
   become: yes
@@ -54,3 +57,4 @@
     dest: /usr/bin/burp
     owner: '{{ ansible_env.USER }}'
     state: link
+  when: burpsuite_install_check.rc != 0
