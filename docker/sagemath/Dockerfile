@@ -23,7 +23,7 @@ RUN adduser --quiet --shell /bin/bash --gecos"" --disabled-password sage \
     && chmod 0440 /etc/sudoers.d/01-sage
 
 COPY scripts/install_sage.sh /tmp/install_sage.sh
-RUN chmod +x /tmp/install_sage.sh 
+RUN chmod +x /tmp/install_sage.sh
 USER sage
 RUN /tmp/install_sage.sh
 
