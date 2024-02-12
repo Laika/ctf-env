@@ -1,0 +1,56 @@
+{
+  "lockfile_version": "1",
+  "packages": {
+    "ansible@latest": {
+      "last_modified": "2024-01-28T16:40:23Z",
+      "resolved": "github:NixOS/nixpkgs/902d74314fae5eb824bc7b597bd4d39640345557#ansible",
+      "source": "devbox-search",
+      "version": "2.16.2",
+      "systems": {
+        "aarch64-darwin": {
+          "store_path": "/nix/store/q0vc50hr7nkkia7aczmb8qg7i3mhi0s7-python3.11-ansible-core-2.16.2"
+        },
+        "aarch64-linux": {
+          "store_path": "/nix/store/a9v96dy5rz14k44xzs95vb8navg2schf-python3.11-ansible-core-2.16.2"
+        },
+        "x86_64-linux": {
+          "store_path": "/nix/store/8lpgljjw1igaxlqkzgfh897vlxdz8zbc-python3.11-ansible-core-2.16.2"
+        }
+      }
+    },
+    "dprint@latest": {
+      "last_modified": "2024-01-14T03:55:27Z",
+      "resolved": "github:NixOS/nixpkgs/dd5621df6dcb90122b50da5ec31c411a0de3e538#dprint",
+      "source": "devbox-search",
+      "version": "0.45.0",
+      "systems": {
+        "aarch64-darwin": {
+          "store_path": "/nix/store/q62m15s0gvgqh8y0lsvjx2j7al3sp41d-dprint-0.45.0"
+        },
+        "aarch64-linux": {
+          "store_path": "/nix/store/312hprzacjvkm1bvg4wqksz1qk3nqjxq-dprint-0.45.0"
+        },
+        "x86_64-darwin": {
+          "store_path": "/nix/store/ssb49iyfnrc7m8m2haw1ay9d0r0l05w2-dprint-0.45.0"
+        },
+        "x86_64-linux": {
+          "store_path": "/nix/store/fy9pyy05rci2n04w72x0cdlfbnkkr1lx-dprint-0.45.0"
+        }
+      }
+    },
+    "vagrant@latest": {
+      "last_modified": "2024-01-31T11:44:42Z",
+      "resolved": "github:NixOS/nixpkgs/269ce7215bb5b436546786e8d354d37903e102a8#vagrant",
+      "source": "devbox-search",
+      "version": "2.3.7",
+      "systems": {
+        "aarch64-linux": {
+          "store_path": "/nix/store/6ka5slmm2s5s8dc7yln00673xghcdszi-vagrant-2.3.7"
+        },
+        "x86_64-linux": {
+          "store_path": "/nix/store/aipjc4xi5fjb4w74ijm4dkmfydfs8f6r-vagrant-2.3.7"
+        }
+      }
+    }
+  }
+}

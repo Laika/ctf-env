@@ -1,0 +1,18 @@
+- name: Update apt mirror server
+  become: true
+  ansible.builtin.replace:
+    path: /etc/apt/sources.list
+    regexp: http://archive.ubuntu.com/ubuntu
+    replace: '{{ base.apt_repository }}'
+- name: apt update && apt upgrade
+  become: true
+  ansible.builtin.apt:
+    update_cache: true
+    upgrade: true
+- name: apt install
+  become: true
+  ansible.builtin.apt:
+    update_cache: true
+    install_recommends: false
+    name: '{{ base.name }}'
+

@@ -1,0 +1,9 @@
+line_ending: lf
+exclude:
+  - oai-cn5g-fed/
+formatter:
+  indent: 2
+  include_document_start: true
+
+# vi: ft=yaml
+

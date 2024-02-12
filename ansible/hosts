@@ -1,8 +1,0 @@
-[all]
-127.0.0.1 ansible_connection=local
-
-[all:vars]
-ansible_ssh_port=2222
-#ansible_python_interpreter=/home/vagrant/.pyenv/shims/python3
-#ansible_ssh_user=vagrant
-# vim: set ft=dosini :

@@ -1,0 +1,30 @@
+- name: Check if Wireshark is installed
+  shell: wireshark --version
+  ignore_errors: true
+  register: wireshark_install_check
+
+
+- name: Create a temporal directory
+  ansible.builtin.tempfile:
+    state: directory
+    suffix: temp
+  register: temp_burp
+  when: wireshark_install_check.rc != 0
+
+- name: Download Burp Suite installation script
+  ansible.builtin.get_url:
+    url: "https://2.na.dl.wireshark.org/src/wireshark-{{ wireshark.version }}.tar.xz"
+    dest: "{{ temp_burp.path }}/wireshark-{{ wireshark.version }}.tar.xz"
+  when: wireshark_install_check.rc != 0
+
+- name: Build wireshark
+  ansible.builtin.shell:
+    cmd: "bash {{ temp_burp.path }}/burpsuite_community_linux_v{{ burp.version | replace('.', '_') }}.sh -q -varfile {{ temp_burp.path }}/response.varfile"
+
+- name: Create a symbolic link
+  become: yes
+  ansible.builtin.file:
+    src: '{{ burp.path }}/BurpSuiteCommunity'
+    dest: /usr/bin/burp
+    owner: '{{ ansible_env.USER }}'
+    state: link

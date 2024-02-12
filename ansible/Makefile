@@ -7,7 +7,7 @@ plugin-install:
 	vagrant plugin install vagrant-vbguest
 
 install:
-	ANSIBLE_NOCOWS=1 ansible-playbook -i hosts playbook.yaml
+	ANSIBLE_NOCOWS=1 ansible-playbook -i hosts playbook.yaml --ask-become-pass
 	@echo "[+] Installation finished. Restart your shell."
 
 ansible:

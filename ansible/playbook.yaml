@@ -1,58 +1,54 @@
-- hosts: all
+---
+- hosts: ctf
   user: ctf
   roles:
     - role: base
-    - role: burp
-      #- role: pyenv
-      #- role: goenv
-      #- role: radare2
-      #- role: gdb
-      #- role: rust
-      #- role: rbenv
-      #- role: patchelf
-      #- role: sagemath
-
-  vars:
-    - base:
+      vars:
         apt_repository: http://ftp.jaist.ac.jp/pub/Linux/ubuntu
-        name:
-          - default-jre
-          - wireshark
-    - burp:
-        version: 2023.2.3
-        path: '{{ ansible_env.HOME }}/ctf-tools/burpsuite_community'
-    - pyenv:
+        packages:
+          - gcc
+    - role: pyenv
+      vars:
         path: '{{ ansible_env.HOME }}/.pyenv'
         versions:
-          - 3.11.2
+          - 3.12.1
           - 2.7.18
         configure_opts: '--enable-shared'
         packages:
           - pwntools
           - pycryptodome
-          - toyotama
           - z3-solver
-    - rbenv:
-        path: '{{ ansible_env.HOME }}/.rbenv'
-        versions:
-          - 3.2.1
-    - radare2:
-        path: '{{ ansible_env.HOME }}/ctf-tools/radare2'
-
-    - goenv:
+    - role: burp
+      vars:
+        version: 2023.2.3
+        path: '{{ ansible_env.HOME }}/tools/burpsuite_community'
+    - role: goenv
+      vars:
         path: '{{ ansible_env.HOME }}/.goenv'
         versions:
-          - 1.20.2
-    - sagemath:
-        path: '{{ ansible_env.HOME }}/ctf-tools/sagemath'
-        version: 9.8
-    - gdb:
+          - 1.21.6
+    - role: radare2
+      vars:
+        path: '{{ ansible_env.HOME }}/tools/radare2'
+    - role: gdb
+      vars:
         pwndbg:
-          path: '{{ ansible_env.HOME }}/ctf-tools/pwndbg'
-    - rust:
+          path: '{{ ansible_env.HOME }}/tools/pwndbg'
+    - role: rust
+      vars:
         packages:
           - vivid
           - zoxide
           - ropr
-    - patchelf:
-        path: '{{ ansible_env.HOME }}/ctf-tools/patchelf'
+    - role: rbenv
+      vars:
+        path: '{{ ansible_env.HOME }}/.rbenv'
+        versions:
+          - 3.2.2
+    - role: patchelf
+      vars:
+        path: '{{ ansible_env.HOME }}/tools/patchelf'
+    - role: sagemath
+      vars:
+        path: '{{ ansible_env.HOME }}/tools/sagemath'
+        version: 10.2
