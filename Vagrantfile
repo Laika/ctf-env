@@ -11,7 +11,7 @@ $mem = if host =~ /darwin/
        elsif host =~ /linux/
          `grep 'MemTotal' /proc/meminfo | sed -e 's/MemTotal://' -e 's/ kB//'`.to_i / 1024
        else
-         `wmic OS get TotalVisibleMemorySize`.spilt("\n")[2].to_i / 1024
+         `wmic OS get TotalVisibleMemorySize`.split("\n")[2].to_i / 1024
        end
 $mem = [$mem / 2, 4096].max
 
@@ -24,6 +24,9 @@ $init_script = <<-EOF
   sed -i.bak -e 's/^#NTP=/NTP=ntp.nict.jp/g' /etc/systemd/timesyncd.conf
   timedatectl set-timezone Asia/Tokyo
   timedatectl set-ntp true
+EOF
+$init_user_script = <<-EOF
+  curl -fsSL https://get.jetpack.io/devbox | bash -s -- --force
 EOF
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
@@ -38,13 +41,20 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     server.vm.network 'forwarded_port', guest: 22, host: 12922, id: 'ssh'
 
     # File system
-    server.vm.synced_folder './ansible', '/home/vagrant/ansible',
+    server.vm.synced_folder '.', '/vagrant',
                             create: true, owner: 'vagrant', group: 'vagrant'
     server.vm.synced_folder './share', '/share',
                             create: true, owner: 'vagrant', group: 'vagrant'
 
     # Provision
-    server.vm.provision 'shell', inline: $init_script
+    server.vm.provision 'shell', privileged: true, inline: $init_script
+    server.vm.provision 'shell', privileged: false, inline: $init_user_script
+    server.vm.provision 'ansible_local' do |ansible|
+      ansible.verbose = "v"
+      ansible.playbook = "/vagrant/ansible/playbook.yaml"
+      ansible.inventory_path = "/vagrant/ansible/hosts.yaml"
+      ansible.config_file = "/vagrant/ansible/ansible.cfg"
+    end
 
     # Specification
     server.vm.disk :disk, size: "80GB", primary: true

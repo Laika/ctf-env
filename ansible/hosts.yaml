@@ -1,13 +1,8 @@
 ---
 all:
   vars:
-    ansible_connection: ssh
+    ansible_connection: local
     ansible_user: vagrant
-    ansible_host: 127.0.0.1
     ansible_sudo_pass: vagrant
-    ansible_ssh_pass: ""
-    node_host: 192.168.56.100
-    ansible_port: 12922
-    ansible_ssh_private_key_file: "{{ inventory_dir }}/../.vagrant/machines/ctf/virtualbox/private_key"
   hosts:
     ctf:
