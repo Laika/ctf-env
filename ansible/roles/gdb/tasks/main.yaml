@@ -9,9 +9,9 @@
 - name: Clone pwndbg from GitHub
   ansible.builtin.git:
     repo: https://github.com/pwndbg/pwndbg
-    dest: '{{ gdb.pwndbg.path }}'
+    dest: '{{ pwndbg.path }}'
     update: yes
 - name: Install pwndbg
   ansible.builtin.shell: |
-    cd {{ gdb.pwndbg.path }}
+    cd {{ pwndbg.path }}
     ./setup.sh

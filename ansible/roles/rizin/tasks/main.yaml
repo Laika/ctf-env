@@ -1,0 +1,39 @@
+# tasks file for rizin
+- name: Check rizin is installed
+  ansible.builtin.shell: . ~/.profile && which rizin
+  ignore_errors: true
+  register: rz_install_check
+- name: Install cmake
+  become: true
+  ansible.builtin.apt:
+    name: cmake
+    state: present
+- name: Add rizin repository
+  become: true
+  ansible.builtin.lineinfile:
+    path: /etc/apt/sources.list.d/rizin.list
+    line: 'deb http://download.opensuse.org/repositories/home:/RizinOrg/xUbuntu_22.04/ /'
+    create: true
+- name: Add rizin gpg key
+  become: true
+  ansible.builtin.shell:
+    cmd: curl -fsSL https://download.opensuse.org/repositories/home:/RizinOrg/xUbuntu_22.04/Release.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/home_RizinOrg.gpg > /dev/null
+- name: Update apt repository
+  become: true
+  ansible.builtin.apt:
+    update_cache: true
+- name: Install rizin
+  become: true
+  ansible.builtin.apt:
+    name: rizin
+    state: present
+  when: rz_install_check.rc != 0
+- name: Install rz-pm
+  become: true
+  ansible.builtin.get_url:
+    url: "{{ url }}"
+    dest: "/usr/local/bin/rz-pm"
+    mode: "0755"
+      #- name: Install rz-ghidra
+  #  shell: |
+    #    rz-pm install rz-ghidra

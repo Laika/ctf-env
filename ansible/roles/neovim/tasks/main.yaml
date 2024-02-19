@@ -1,18 +1,14 @@
-- name: Update apt mirror server
+- name: Install neovim
   become: true
-  ansible.builtin.replace:
-    path: /etc/apt/sources.list
-    regexp: http://archive.ubuntu.com/ubuntu
-    replace: '{{ base.apt_repository }}'
-- name: apt update && apt upgrade
+  ansible.builtin.get_url:
+    url: "https://github.com/neovim/neovim/releases/download/{{ version }}/nvim.appimage"
+    dest: "/usr/local/bin/nvim"
+    mode: "0755"
+- name: Add alternatives
   become: true
-  ansible.builtin.apt:
-    update_cache: true
-    upgrade: true
-- name: apt install
-  become: true
-  ansible.builtin.apt:
-    update_cache: true
-    install_recommends: false
-    name: '{{ base.name }}'
+  ansible.builtin.shell:
+    cmd: |
+      update-alternatives --install /usr/bin/vi vi /usr/local/bin/nvim 60
+      update-alternatives --install /usr/bin/vim vim /usr/local/bin/nvim 60
+      update-alternatives --install /usr/bin/editor editor /usr/local/bin/nvim 60
 
